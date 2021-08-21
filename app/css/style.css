@@ -36,6 +36,10 @@
 .latin {
     font-family: 'EB Garamond', serif;
     font-size: 18px;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
 }
 
 a {

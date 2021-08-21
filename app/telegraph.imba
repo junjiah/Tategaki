@@ -14,7 +14,7 @@ export class Telegraph
 				# console.log groups.content
 				groups.forEach do(group)
 					if group.isLatin
-						combined += `<span class="latin">{group.content}</span>`
+						combined += `<span class="latin" lang="en">{group.content}</span>`
 					else if group.isCJK
 						combined += `<span class="cjk">{group.content}</span>`
 					else
