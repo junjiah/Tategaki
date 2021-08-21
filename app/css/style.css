@@ -20,15 +20,6 @@
     height: 558px;
 }
 
-/* #app > blockquote {
-    text-align: justify;
-    font-family: 'Noto Serif TC', 'Noto Serif SC', 'Noto Serif JP', serif;
-    line-height: 1.58;
-    height: 576px;
-    margin: 0;
-    margin-left: 10px;
-} */
-
 .cjk {
     font-family: serif;
 }

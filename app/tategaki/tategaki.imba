@@ -28,6 +28,11 @@ fetch(url).then(do(res)
 	app.innerHTML = telegraph.translatedHTML.trim!
 	app.insertBefore heading, app.firstChild
 
+	let latins = document.getElementsByClassName 'latin'
+	for latin in latins
+		console.log latin.innerHTML
+		if latin.offsetHeight <= 30
+			latin.style.textCombineUpright = "all"
 
 global css html
 	fs:18px
