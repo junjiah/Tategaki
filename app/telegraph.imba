@@ -76,7 +76,7 @@ export class Telegraph
 				return
 				
 			processed.push
-				content: l.content.replace(/——|──/, '︱︱')
+				content: l.content.replace(/——|──/g, '︱︱')
 				isCJK: l.isCJK
 				isLatin: no
 		
