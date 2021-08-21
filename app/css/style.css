@@ -1,0 +1,27 @@
+#app > h1 {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 54px;
+}
+
+#app > p {
+    text-align: justify;
+    font-family: 'Noto Serif TC', 'Noto Serif SC', 'Noto Serif JP', serif;
+    height: 576px;
+    line-height: 1.58;
+    margin: 0;
+    margin-left: 10px;
+}
+
+.cjk {
+    font-family: serif;
+}
+
+.latin {
+    font-family: 'EB Garamond', serif;
+}
+
+a {
+    text-decoration: none;
+}
