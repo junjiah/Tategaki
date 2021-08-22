@@ -30,7 +30,7 @@ fetch(url).then(do(res)
 
 	let latins = document.getElementsByClassName 'latin'
 	for latin in latins
-		if latin.offsetHeight <= 30
+		if /[\p{Script=Latin}\d]/.test(latin) and latin.offsetHeight <= 30
 			latin.style.textCombineUpright = "all"
 
 global css html

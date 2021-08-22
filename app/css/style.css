@@ -3,7 +3,7 @@
     font-size: 18px;
     font-weight: 700;
     font-family: Helvetica, sans-serif;
-    margin-left: 54px;
+    margin-left: 89.64px;
 }
 
 #app p, blockquote {
@@ -22,6 +22,15 @@
     height: 576px;
     border-top: 2px solid #000;
     padding-top: 16px;
+}
+
+#app h3 {
+    font-family: 'Noto Serif TC', 'Noto Serif SC', 'Noto Serif JP', 'STSong', 'SimSun', serif;
+    font-weight: 700;
+    font-size: 18px;
+    height: 576px;
+    line-height: 1.66;
+    line-height: 1.66;
 }
 
 #app figure {
@@ -44,7 +53,7 @@
 }
 
 .latin {
-    font-family: 'EB Garamond', 'Noto Serif TC', 'Noto Serif SC', 'Noto Serif JP', Garamond, serif;
+    font-family: 'EB Garamond', 'Noto Serif TC', 'Noto Serif SC', 'Noto Serif JP', Garamond, Georgia, serif;
     font-size: 18px;
     hyphens: auto;
     -webkit-hyphens: auto;
