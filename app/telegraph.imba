@@ -3,15 +3,11 @@ export class Telegraph
 	prop title
 
 	def translateToHTML content
-		# console.log content
 		let result = ""
 		for c in content
 			if typeof c is "string"
-				# console.log c
 				groups = cjkGroupsOf c
-				# console.log groups
 				let combined = ''
-				# console.log groups.content
 				groups.forEach do(group)
 					if group.isLatin
 						combined += `<span class="latin" lang="en">{group.content}</span>`

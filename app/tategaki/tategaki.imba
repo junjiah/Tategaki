@@ -21,7 +21,7 @@ fetch(url).then(do(res)
 	imba.mount <app>
 
 	let heading = document.createElement('h1')
-	heading.innerText = telegraph.title
+	heading.innerText = telegraph.preProcess telegraph.title
 	document.title = telegraph.title + ' – Denpo'
 
 	let app = document.getElementById('app')
