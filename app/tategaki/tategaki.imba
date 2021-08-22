@@ -30,7 +30,6 @@ fetch(url).then(do(res)
 
 	let latins = document.getElementsByClassName 'latin'
 	for latin in latins
-		console.log latin.innerHTML
 		if latin.offsetHeight <= 30
 			latin.style.textCombineUpright = "all"
 

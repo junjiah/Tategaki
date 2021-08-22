@@ -27,7 +27,10 @@ export class Telegraph
 					attrsRaw = Object.entries(c.attrs).map(do(entry)
 						let key = entry[0]
 						let value = entry[1]
-						`{key}="{value}"`
+						if (key == 'href' or key == 'src') and value[0] == '/'
+							value = 'https://telegra.ph' + value
+						console.log key, value
+						return `{key}="{value}"`
 					).join ' '
 
 				result += "<{c.tag}{attrsRaw ? ' ' + attrsRaw : ''}>{translateToHTML c.children}</{c.tag}>" + (c.tag is 'p' ? '\n' : '')
