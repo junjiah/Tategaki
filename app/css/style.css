@@ -16,8 +16,12 @@
 }
 
 #app > blockquote {
-    margin-top: 18px;
-    height: 558px;
+    margin-top: -16px;
+    /* margin-left: 30px; */
+    /* margin-right: 30px; */
+    height: 576px;
+    border-top: 2px solid #000;
+    padding-top: 16px;
 }
 
 .cjk {
