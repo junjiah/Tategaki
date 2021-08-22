@@ -28,41 +28,40 @@ fetch(url).then(do(res)
 	app.innerHTML = telegraph.translatedHTML.trim!
 	app.insertBefore heading, app.firstChild
 
-	let latins = document.getElementsByClassName 'latin'
+	let latinsElements = document.getElementsByClassName 'latin'
+	let latins = []
+	for ele in latinsElements
+		latins.push ele
 	for latin in latins
 		let text = latin.innerHTML
-		if /[a-zA-Z\p{Script=Latin}\d]/.test(text) and latin.offsetHeight <= 30
-			if text.length == 1
-				if /[a-z]/.test(text)
-					let base = 'a'.charCodeAt(0)
-					let newBase = '\uff41'.charCodeAt(0)
-					let current = text.charCodeAt(0)
-					let newChar = String.fromCharCode(current - base + newBase)
-					latin.innerHTML = newChar
-				else if /[A-Z]/.test(text)
-					let base = 'A'.charCodeAt(0)
-					let newBase = '\uff21'.charCodeAt(0)
-					let current = text.charCodeAt(0)
-					let newChar = String.fromCharCode(current - base + newBase)
-					latin.innerHTML = newChar
-				else if /[0-9]/.test(text)
-					let base = '0'.charCodeAt(0)
-					let newBase = '\uff10'.charCodeAt(0)
-					let current = text.charCodeAt(0)
-					let newChar = String.fromCharCode(current - base + newBase)
-					latin.innerHTML = newChar
+		if /[a-zA-Z\p{Script=Latin}\d]/.test(text)
+			if latin.offsetHeight <= 30
+				if text.length == 1
+					if /[a-z]/.test(text)
+						latin.innerHTML = transformToFullWidth text, 'a', '\uff41'
+					else if /[A-Z]/.test(text)
+						latin.innerHTML = transformToFullWidth text, 'A', '\uff21'
+					else if /[0-9]/.test(text)
+						latin.innerHTML = transformToFullWidth text, '0', '\uff10'
+					latin.classList.remove 'latin'
+				else if /^[A-Z]+$/.test(text)
+					latin.innerHTML = Array.from(text, do(x)
+						transformToFullWidth x, 'A', '\uff21'
+					).join('')
+					latin.classList.remove 'latin'
+				else
+					latin.style.textCombineUpright = "all"
 
-			latin.style.textCombineUpright = "all"
+def transformToFullWidth x, baseChar, newBaseChar
+	let base = baseChar.charCodeAt(0)
+	let newBase = newBaseChar.charCodeAt(0)
+	let current = x.charCodeAt(0)
+	let newChar = String.fromCharCode(current - base + newBase)
+	return newChar
 
-global css html
-	fs:18px
-
-global css body 
-	writing-mode:vertical-rl
-	p:54px 54px 72px
 
 tag app
-	css .upright
-		writing-mode:horizontal-tb
+	# css .upright
+	# 	writing-mode:horizontal-tb
 
 	<self#app>
