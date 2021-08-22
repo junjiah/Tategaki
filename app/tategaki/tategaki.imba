@@ -52,7 +52,6 @@ fetch(url).then(do(res)
 				else
 					latin.style.textCombineUpright = "all"
 			else
-				console.log text
 				if /^\d\d{0,3}$/.test text
 					latin.style.textCombineUpright = "all"
 
