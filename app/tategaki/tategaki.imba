@@ -59,7 +59,7 @@ global css html
 
 global css body 
 	writing-mode:vertical-rl
-	p:36px 54px 72px
+	p:54px 54px 72px
 
 tag app
 	css .upright
