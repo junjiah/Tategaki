@@ -30,7 +30,28 @@ fetch(url).then(do(res)
 
 	let latins = document.getElementsByClassName 'latin'
 	for latin in latins
-		if /[\p{Script=Latin}\d]/.test(latin.innerHTML) and latin.offsetHeight <= 30
+		let text = latin.innerHTML
+		if /[a-zA-Z\p{Script=Latin}\d]/.test(text) and latin.offsetHeight <= 30
+			if text.length == 1
+				if /[a-z]/.test(text)
+					let base = 'a'.charCodeAt(0)
+					let newBase = '\uff41'.charCodeAt(0)
+					let current = text.charCodeAt(0)
+					let newChar = String.fromCharCode(current - base + newBase)
+					latin.innerHTML = newChar
+				else if /[A-Z]/.test(text)
+					let base = 'A'.charCodeAt(0)
+					let newBase = '\uff21'.charCodeAt(0)
+					let current = text.charCodeAt(0)
+					let newChar = String.fromCharCode(current - base + newBase)
+					latin.innerHTML = newChar
+				else if /[0-9]/.test(text)
+					let base = '0'.charCodeAt(0)
+					let newBase = '\uff10'.charCodeAt(0)
+					let current = text.charCodeAt(0)
+					let newChar = String.fromCharCode(current - base + newBase)
+					latin.innerHTML = newChar
+
 			latin.style.textCombineUpright = "all"
 
 global css html
