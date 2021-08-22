@@ -28,7 +28,8 @@ h1 {
     font-size: 18px;
     font-weight: 700;
     font-family: Helvetica, sans-serif;
-    margin-left: 60px;
+    margin: 0;
+    margin-left: 92px;
 }
 
 p, blockquote {
@@ -54,7 +55,7 @@ h3 {
     font-weight: 700;
     font-size: 18px;
     height: 576px;
-    line-height: 1.66;
+    margin: 0 62 0 32px;
     line-height: 1.66;
 }
 
@@ -64,6 +65,7 @@ figure {
 }
 
 figcaption {
+    font-family: 'Noto Serif TC', 'Noto Serif JP', 'Noto Serif SC',  'STSong', 'SimSun', serif;
     margin-top: 10px;
     text-align: right;
     color: #79828B;

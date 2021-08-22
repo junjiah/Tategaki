@@ -35,7 +35,14 @@ fetch(url).then(do(res)
 	for latin in latins
 		let text = latin.innerHTML
 		if /^[a-zA-Z\p{Script=Latin}\d]/.test text
-			if latin.offsetHeight <= 30
+			# console.log text
+			if /^[A-Z]+$/.test text
+				latin.innerHTML = Array.from(text, do(x)
+					transformToFullWidth x, 'A', '\uff21'
+				).join('')
+				latin.classList.remove 'latin'
+			else if latin.offsetHeight <= 30
+				# console.log text
 				if text.length == 1
 					if /[a-z]/.test text
 						latin.innerHTML = transformToFullWidth text, 'a', '\uff41'
@@ -44,16 +51,10 @@ fetch(url).then(do(res)
 					else if /[0-9]/.test text
 						latin.innerHTML = transformToFullWidth text, '0', '\uff10'
 					latin.classList.remove 'latin'
-				else if /^[A-Z]+$/.test text
-					latin.innerHTML = Array.from(text, do(x)
-						transformToFullWidth x, 'A', '\uff21'
-					).join('')
-					latin.classList.remove 'latin'
-				else
+				else 
 					latin.style.textCombineUpright = "all"
-			else
-				if /^\d\d{0,3}$/.test text
-					latin.style.textCombineUpright = "all"
+			else if /^[1-9]\d{0,3}$/.test text
+				latin.style.textCombineUpright = "all"
 
 def transformToFullWidth x, baseChar, newBaseChar
 	let base = baseChar.charCodeAt(0)
@@ -64,4 +65,4 @@ def transformToFullWidth x, baseChar, newBaseChar
 
 
 tag app
-	<self#app>
+	<self#app lang="zh-Hant">

@@ -33,7 +33,7 @@ export class Telegraph
 		translatedHTML = postProcess result
 	
 	def preProcess text
-		return text.replace(/——|──/g, '︱︱').replace(/……/g, '⋯⋯')
+		return text.replace(/——|──/g, '――').replace(/……/g, '⋯⋯')
 	
 	def postProcess text
 		return text.replace('\n \n', '<br />&emsp;')
