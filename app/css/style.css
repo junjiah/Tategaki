@@ -17,6 +17,7 @@
 body {
     font-size: 18px;
     writing-mode: vertical-rl;
+    hanging-punctuation: first allow-end last;
     padding: 54px 54px 72px;
     background-color: var(--background-colour);
     color: var(--foreground-colour);

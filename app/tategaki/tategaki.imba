@@ -34,22 +34,26 @@ fetch(url).then(do(res)
 		latins.push ele
 	for latin in latins
 		let text = latin.innerHTML
-		if /[a-zA-Z\p{Script=Latin}\d]/.test(text)
+		if /^[a-zA-Z\p{Script=Latin}\d]/.test text
 			if latin.offsetHeight <= 30
 				if text.length == 1
-					if /[a-z]/.test(text)
+					if /[a-z]/.test text
 						latin.innerHTML = transformToFullWidth text, 'a', '\uff41'
-					else if /[A-Z]/.test(text)
+					else if /[A-Z]/.test text
 						latin.innerHTML = transformToFullWidth text, 'A', '\uff21'
-					else if /[0-9]/.test(text)
+					else if /[0-9]/.test text
 						latin.innerHTML = transformToFullWidth text, '0', '\uff10'
 					latin.classList.remove 'latin'
-				else if /^[A-Z]+$/.test(text)
+				else if /^[A-Z]+$/.test text
 					latin.innerHTML = Array.from(text, do(x)
 						transformToFullWidth x, 'A', '\uff21'
 					).join('')
 					latin.classList.remove 'latin'
 				else
+					latin.style.textCombineUpright = "all"
+			else
+				console.log text
+				if /^\d\d{0,3}$/.test text
 					latin.style.textCombineUpright = "all"
 
 def transformToFullWidth x, baseChar, newBaseChar
@@ -61,7 +65,4 @@ def transformToFullWidth x, baseChar, newBaseChar
 
 
 tag app
-	# css .upright
-	# 	writing-mode:horizontal-tb
-
 	<self#app>
