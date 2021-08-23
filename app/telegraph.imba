@@ -83,10 +83,11 @@ export class Telegraph
 				lastLatin = l.content
 				return
 				
-			processed.push
-				content: l.content
-				isCJK: l.isCJK
-				isLatin: no
+			if l.content
+				processed.push
+					content: l.content
+					isCJK: l.isCJK
+					isLatin: no
 		
 		# console.log processed
 

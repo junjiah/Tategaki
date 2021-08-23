@@ -35,14 +35,14 @@ fetch(url).then(do(res)
 	for latin in latins
 		let text = latin.innerHTML
 		if /^[a-zA-Z\p{Script=Latin}\d]/.test text
-			# console.log text
 			if /^[A-Z]+$/.test text
 				latin.innerHTML = Array.from(text, do(x)
 					transformToFullWidth x, 'A', '\uff21'
 				).join('')
+				# Works only in Firefox
+				# latin.classList.add 'latin-full-width' 
 				latin.classList.remove 'latin'
 			else if latin.offsetHeight <= 30
-				# console.log text
 				if text.length == 1
 					if /[a-z]/.test text
 						latin.innerHTML = transformToFullWidth text, 'a', '\uff41'
@@ -50,11 +50,12 @@ fetch(url).then(do(res)
 						latin.innerHTML = transformToFullWidth text, 'A', '\uff21'
 					else if /[0-9]/.test text
 						latin.innerHTML = transformToFullWidth text, '0', '\uff10'
+					# latin.classList.add 'latin-full-width'
 					latin.classList.remove 'latin'
-				else 
-					latin.style.textCombineUpright = "all"
+				else
+					latin.classList.add 'latin-combine'
 			else if /^[1-9]\d{0,3}$/.test text
-				latin.style.textCombineUpright = "all"
+				latin.classList.add 'latin-combine'
 
 def transformToFullWidth x, baseChar, newBaseChar
 	let base = baseChar.charCodeAt(0)
