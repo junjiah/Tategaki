@@ -43,6 +43,7 @@ fetch(url).then(do(res)
 				# latin.classList.add 'latin-full-width' 
 				latin.classList.remove 'latin'
 			else if latin.offsetHeight <= 30
+				# console.log latin.offsetHeight, text
 				if text.length == 1
 					if /[a-z]/.test text
 						latin.innerHTML = transformToFullWidth text, 'a', '\uff41'

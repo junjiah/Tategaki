@@ -3,6 +3,7 @@
     --background-colour: #ffffff;
     --a-colour: #1400ee;
     --a-visited-colour: #54198b;
+    --img-onhover-colour: rgba(0, 0, 0, .06);
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -11,6 +12,7 @@
         --background-colour: #202124;
         --a-colour: #cbccff;
         --a-visited-colour: #e0b0ff;
+        --img-onhover-colour: rgba(255, 255, 255, .06); 
     }
 }
 
@@ -29,7 +31,7 @@ body {
 
 h1, p, blockquote, h3 {
     font-size: 18px;
-    height: 576px;
+    max-height: 576px;
     margin: 0;
 }
 
@@ -77,16 +79,21 @@ img {
 }
 
 figure {
-    writing-mode: horizontal-tb;
-
     margin: 0 30px 0;
 }
 
-figcaption {
-    color: #79828B;
-    text-align: center;
+figure > img {
+    transition-duration: 0.2s;
+}
 
-    margin-top: 10px;
+figure > img:hover {
+    background-color: var(--img-onhover-colour);
+}
+
+figcaption {
+    max-height: 576px;
+    color: #787f86;
+    text-align: center;
 }
 
 .latin {
