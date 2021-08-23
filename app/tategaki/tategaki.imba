@@ -33,7 +33,7 @@ fetch(url).then(do(res)
 	for ele in latinsElements
 		latins.push ele
 	for latin in latins
-		let text = latin.innerHTML
+		let text = latin.innerHTML.trim!
 		if /^[a-zA-Z\p{Script=Latin}\d]/.test text
 			if /^[A-Z]+$/.test text
 				latin.innerHTML = Array.from(text, do(x)
@@ -53,8 +53,10 @@ fetch(url).then(do(res)
 					# latin.classList.add 'latin-full-width'
 					latin.classList.remove 'latin'
 				else
+					latin.innerHTML = text
 					latin.classList.add 'latin-combine'
 			else if /^[1-9]\d{0,3}$/.test text
+				latin.innerHTML = text
 				latin.classList.add 'latin-combine'
 
 def transformToFullWidth x, baseChar, newBaseChar

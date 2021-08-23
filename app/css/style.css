@@ -91,10 +91,16 @@ figcaption {
 
 .latin {
     font-family: 'EB Garamond', 'Noto Serif SC', 'Noto Serif TC', 'Noto Serif JP', Garamond, Georgia, serif;
+
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
     -moz-hyphens: auto;
     hyphens: auto;
+
+    -moz-hyphenate-limit-chars: 5 3 2;
+    -webkit-hyphenate-limit-chars: 5 3 2;
+    -ms-hyphenate-limit-chars: 5 3 2;
+    hyphenate-limit-chars: 5 3 2;
 }
 
 .latin-combine {
