@@ -34,7 +34,7 @@ export class Telegraph
 	
 	def preProcess text
 		return text.replace(/——|──/g, '――').replace(/……/g, '⋯⋯')
-	
+
 	def postProcess text
 		return text.replace('\n \n', '<br />&emsp;')
 			.replace('\n', '<br />&emsp;')
@@ -50,8 +50,6 @@ export class Telegraph
 			matches.push match
 			match = reg.exec text
 		
-		# console.log matches
-		
 		let labelled = matches.map do(match)
 			content: match[0]
 			isCJK: no # match[1] != undefined
@@ -62,8 +60,6 @@ export class Telegraph
 			content: ""
 			isCJK: yes
 			isLatin: no
-
-		# console.log labelled
 
 		let processed = []
 		let isLastLatin = no
@@ -88,7 +84,5 @@ export class Telegraph
 					content: l.content
 					isCJK: l.isCJK
 					isLatin: no
-		
-		# console.log processed
 
 		return processed
