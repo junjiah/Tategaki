@@ -56,7 +56,7 @@ fetch(url).then(do(res)
 				let digit = matches[1]
 				if digit.length == 1
 					digit = transformToFullWidth digit
-				unit.innerHTML = `<span class="latin latin-combine">{digit}</span>％`
+				unit.innerHTML = `<span class="latin latin-combine">{digit}</span>&#8288;％`
 				latin.replaceWith unit
 			else if latin.offsetHeight <= 24
 				latin.innerHTML = text
