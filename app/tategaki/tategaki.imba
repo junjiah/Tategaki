@@ -25,8 +25,10 @@ fetch(url).then(do(res)
 	document.title = telegraph.title + ' – Denpo'
 
 	let app = document.getElementById('app')
-	app.innerHTML = telegraph.translatedHTML.trim!
-	app.insertBefore heading, app.firstChild
+	let article = document.createElement 'article'
+	article.innerHTML = telegraph.translatedHTML.trim! 
+	article.insertBefore heading, article.firstChild
+	app.appendChild article
 
 	let latinsElements = document.getElementsByClassName 'latin'
 	let latins = []
@@ -68,4 +70,19 @@ def transformToFullWidth x
 	return newChar
 
 tag app
+	css footer
+		pos:fixed
+		b:0
+		l:0
+		r:0
+		writing-mode:horizontal-tb
+		ta:center
+		p:10px
+		c:#787f86
+
 	<self#app lang="zh-Hant">
+		<footer.latin>
+			<small>
+				"Denpo in Tategaki is under early development. If any issue arise, feel free to contact me at "
+				<a href="mailto:the@unpopular.me"> "the@unpopular.me"
+				" at your convenience."
