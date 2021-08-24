@@ -120,3 +120,53 @@ figcaption {
 .latin-full-width {
     text-transform: full-width;
 }
+
+.squeeze-out {
+    letter-spacing: -9px;
+
+}
+
+#debug > .squeeze-out {
+    color: darkcyan;
+}
+
+.squeeze-in {
+    letter-spacing: -9px;
+
+    position: relative;
+    top: -9px;
+}
+
+
+.squeeze-in + .squeeze-in-space {
+    display: none;
+}
+
+.squeeze-other-punc + .squeeze-in-space {
+    display: none;
+}
+
+.squeeze-out-space + .squeeze-in-space {
+    /* Optional */
+    /* display: none; */
+}
+
+.squeeze-out-space {
+    display: none;
+}
+
+.squeeze-out-space:last-child {
+    display: inline;
+}
+
+#debug > .squeeze-in {
+    color: red;
+}
+
+#debug > .squeeze-out-space {
+    background-color: rgba(0, 139, 139, 0.5);
+}
+
+#debug > .squeeze-in-space {
+    background-color: rgba(255, 0, 0, 0.5);
+}
