@@ -34,39 +34,38 @@ fetch(url).then(do(res)
 		latins.push ele
 	for latin in latins
 		let text = latin.innerHTML.trim!
-		if /^[a-zA-Z\p{Script=Latin}\d]/.test text
-			if /^[A-Z]+$/.test text
+		if /^[\w\p{Script=Latin}]/.test text
+			if text.length == 1
+				latin.innerHTML = transformToFullWidth text
+				latin.classList.remove 'latin'
+			else if /^([A-Z]+|\d{4,})$/.test text
 				latin.innerHTML = Array.from(text, do(x)
-					transformToFullWidth x, 'A', '\uff21'
+					transformToFullWidth x
 				).join('')
-				# Works only in Firefox
+				# Works only in Firefox `text-transform`
 				# latin.classList.add 'latin-full-width' 
 				latin.classList.remove 'latin'
+			else if /^\d{2,3}$/.test text
+				latin.innerHTML = text
+				latin.classList.add 'latin-combine'
+			else if /^\d{2,3}%$/.test text
+				let matches = /^(\d{1,3})%$/.exec text
+				let unit = document.createElement 'span'
+				let digit = matches[1]
+				if digit.length == 1
+					digit = transformToFullWidth digit
+				unit.innerHTML = `<span class="latin latin-combine">{digit}</span>％`
+				latin.replaceWith unit
 			else if latin.offsetHeight <= 30
-				# console.log latin.offsetHeight, text
-				if text.length == 1
-					if /[a-z]/.test text
-						latin.innerHTML = transformToFullWidth text, 'a', '\uff41'
-					else if /[A-Z]/.test text
-						latin.innerHTML = transformToFullWidth text, 'A', '\uff21'
-					else if /[0-9]/.test text
-						latin.innerHTML = transformToFullWidth text, '0', '\uff10'
-					# latin.classList.add 'latin-full-width'
-					latin.classList.remove 'latin'
-				else
-					latin.innerHTML = text
-					latin.classList.add 'latin-combine'
-			else if /^[1-9]\d{0,3}$/.test text
 				latin.innerHTML = text
 				latin.classList.add 'latin-combine'
 
-def transformToFullWidth x, baseChar, newBaseChar
-	let base = baseChar.charCodeAt(0)
-	let newBase = newBaseChar.charCodeAt(0)
+def transformToFullWidth x
+	let base = '0'.charCodeAt(0)
+	let newBase = '\uff10'.charCodeAt(0)
 	let current = x.charCodeAt(0)
 	let newChar = String.fromCharCode(current - base + newBase)
 	return newChar
-
 
 tag app
 	<self#app lang="zh-Hant">
