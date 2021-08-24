@@ -108,6 +108,9 @@ figcaption {
     -webkit-hyphenate-limit-chars: 5 3 2;
     -ms-hyphenate-limit-chars: 5 3 2;
     hyphenate-limit-chars: 5 3 2;
+
+    position: relative;
+    left: 1.2px;
 }
 
 .latin-combine {
@@ -115,6 +118,7 @@ figcaption {
     -moz-text-combine-upright: all;
     -ms-text-combine-horizontal: all;
     text-orientation: all;
+    left: 0;
 }
 
 .latin-full-width {
