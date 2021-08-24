@@ -132,17 +132,12 @@ figcaption {
     letter-spacing: -0.5rem;
 }
 
-#debug > .squeeze-out {
-    color: darkcyan;
-}
-
 .squeeze-in {
     letter-spacing: -0.5rem;
 
     position: relative;
     top: -0.5rem;
 }
-
 
 .squeeze-in + .squeeze-in-space {
     display: none;
@@ -169,10 +164,10 @@ figcaption {
     color: red;
 }
 
-.debug .squeeze-out-space {
-    background-color: rgba(0, 139, 139, 0.5);
+.debug .squeeze-out {
+    color: darkcyan;
 }
 
-.debug .squeeze-in-space {
-    background-color: rgba(255, 0, 0, 0.5);
+.debug .squeeze-out-space {
+    background-color: rgba(0, 139, 139, 0.5);
 }
