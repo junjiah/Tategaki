@@ -2,8 +2,10 @@ import { Telegraph } from '../telegraph'
 import fetch from 'node-fetch'
 import '../css/style.css'
 
-let re = /tategaki(\/.+)/
-let path = (re.exec window.location.pathname)[1]
+let re = /tategaki(\/[^\/]+)(\/debug)?$/
+let execed = re.exec window.location.pathname
+let path = execed[1]
+let isDebug = execed[2] != undefined
 
 let baseURL = 'https://api.telegra.ph/getPage'
 let query = '?return_content=true'
@@ -29,6 +31,9 @@ fetch(url).then(do(res)
 	article.innerHTML = telegraph.translatedHTML.trim! 
 	article.insertBefore heading, article.firstChild
 	app.appendChild article
+
+	if isDebug
+		app.classList.add 'debug'
 
 	let latinsElements = document.getElementsByClassName 'latin'
 	let latins = []

@@ -165,14 +165,14 @@ figcaption {
     display: inline;
 }
 
-#debug > .squeeze-in {
+.debug .squeeze-in {
     color: red;
 }
 
-#debug > .squeeze-out-space {
+.debug .squeeze-out-space {
     background-color: rgba(0, 139, 139, 0.5);
 }
 
-#debug > .squeeze-in-space {
+.debug .squeeze-in-space {
     background-color: rgba(255, 0, 0, 0.5);
 }
