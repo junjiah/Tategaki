@@ -79,6 +79,7 @@ tag app
 		ta:center
 		p:10px
 		c:#787f86
+		lh:normal
 
 	<self#app lang="zh-Hant">
 		<footer.latin>
