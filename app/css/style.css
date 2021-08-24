@@ -16,12 +16,15 @@
     }
 }
 
+html {
+    font-size: 18px; /* Define rem */
+}
+
 body {
     color: var(--foreground-colour);
-    font-size: 18px;
     font-family: 'Noto Serif TC', 'Noto Serif SC', 'Noto Serif JP', 'STSong', 'SimSun', serif;
     writing-mode: vertical-rl;
-    line-height: 1.66;
+    line-height: 1.667;
 
     hanging-punctuation: first allow-end last;
 
@@ -30,8 +33,8 @@ body {
 }
 
 h1, p, blockquote, h3 {
-    font-size: 18px;
-    max-height: 576px;
+    font-size: 1rem;
+    max-height: 32rem;
     margin: 0;
 }
 
@@ -41,16 +44,16 @@ h1, h3 {
 
 h1 {
     font-family: Helvetica, sans-serif;
-    margin-left: 92px;
+    margin-left: 5rem; /* 3*1.667 */
 }
 
 h3 {
-    margin: 0 60 0 32px;
+    margin: 0 3.334rem 0 1.667rem; /* 2*1.667 */
 }
 
 p, blockquote {
     text-align: justify;
-    text-indent: 18px;
+    text-indent: 1rem;
 }
 
 blockquote {
@@ -75,11 +78,11 @@ a:visited {
 }
 
 img {
-    max-height: 576px;
+    max-height: 32rem;
 }
 
 figure {
-    margin: 0 30px 0;
+    margin: 0 1.667rem 0;
 }
 
 figure > img {
@@ -91,7 +94,7 @@ figure > img:hover {
 }
 
 figcaption {
-    max-height: 576px;
+    max-height: 32rem;
     color: #787f86;
     text-align: center;
 }
@@ -110,7 +113,7 @@ figcaption {
     hyphenate-limit-chars: 5 3 2;
 
     position: relative;
-    left: 1.2px;
+    left: 0.0667rem;
 }
 
 .latin-combine {
@@ -126,8 +129,7 @@ figcaption {
 }
 
 .squeeze-out {
-    letter-spacing: -9px;
-
+    letter-spacing: -0.5rem;
 }
 
 #debug > .squeeze-out {
@@ -135,10 +137,10 @@ figcaption {
 }
 
 .squeeze-in {
-    letter-spacing: -9px;
+    letter-spacing: -0.5rem;
 
     position: relative;
-    top: -9px;
+    top: -0.5rem;
 }
 
 
