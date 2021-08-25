@@ -174,7 +174,7 @@ b, strong .latin {
 }
 
 .debug .squeeze-in-space {
-    color: rgba(255, 0, 0, 0.5);
+    background-color: rgba(255, 0, 0, 0.5);
 }
 
 .debug .squeeze-out-space {

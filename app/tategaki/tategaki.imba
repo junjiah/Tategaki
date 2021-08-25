@@ -69,6 +69,7 @@ fetch(url).then(do(res)
 	
 	# Bug: Cannot scroll at the very left part of body (Safari)
 	if isDebug
+		return
 		const scrollContainer = document.querySelector('body')
 		scrollContainer.addEventListener "wheel", do(e)
 			console.log 'wheel'
