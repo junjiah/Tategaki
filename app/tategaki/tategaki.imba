@@ -66,6 +66,11 @@ fetch(url).then(do(res)
 			else if latin.offsetHeight < 23
 				latin.innerHTML = text
 				latin.classList.add 'latin-combine'
+	
+	const scrollContainer = document.querySelector('body')
+
+	scrollContainer.addEventListener 'wheel' do(e)
+		scrollContainer.scrollLeft -= e.deltaY
 
 def transformToFullWidth x
 	let base = '0'.charCodeAt(0)
