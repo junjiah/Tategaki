@@ -130,7 +130,6 @@ b, strong .latin {
     -moz-text-combine-upright: all;
     -ms-text-combine-horizontal: all;
     text-orientation: all;
-    left: 0;
 }
 
 .latin-full-width {
