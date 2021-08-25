@@ -37,9 +37,6 @@ export class Telegraph
 	def postProcess text
 		return text
 			.replace(/\u200B\u204B/g, '<br />&emsp;')
-		# return text.replace(/\u0020*\n[\n]*/g, '<br />&emsp;')
-		# .replaceAll('\n *\n', '<br />&emsp;')
-		# .replaceAll('\n', '<br />&emsp;')
 	
 	static def captureSqueeze text
 		def isIn ch\String
