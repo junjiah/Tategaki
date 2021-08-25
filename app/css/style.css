@@ -173,6 +173,10 @@ b, strong .latin {
     color: darkcyan;
 }
 
+.debug .squeeze-in-space {
+    color: rgba(255, 0, 0, 0.5);
+}
+
 .debug .squeeze-out-space {
     background-color: rgba(0, 139, 139, 0.5);
 }

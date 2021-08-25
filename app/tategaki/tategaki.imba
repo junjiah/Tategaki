@@ -67,10 +67,22 @@ fetch(url).then(do(res)
 				latin.innerHTML = text
 				latin.classList.add 'latin-combine'
 	
+	# Bug: Cannot scroll at the very left part of body (Safari)
 	const scrollContainer = document.querySelector('body')
+	scrollContainer.addEventListener "wheel", do(e)
+		console.log 'wheel'
+		if e.altKey or e.shiftKey
+			return
 
-	scrollContainer.addEventListener 'wheel' do(e)
-		scrollContainer.scrollLeft -= e.deltaY
+		let x = e.deltaX
+		let y = e.deltaY
+
+		e.preventDefault!
+
+		if Math.abs(y) < 5 or Math.abs(x) > 0 and Math.abs(x) < 5
+			return
+
+		scrollContainer.scrollLeft -= y
 
 def transformToFullWidth x
 	let base = '0'.charCodeAt(0)
