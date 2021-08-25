@@ -28,8 +28,12 @@ body {
 
     hanging-punctuation: first allow-end last;
 
-    padding: 54px 54px 72px;
+    padding: 3.334rem;
     background-color: var(--background-colour);
+
+    -moz-font-feature-settings: "locl";
+    -webkit-font-feature-settings: "locl";
+    font-feature-settings: "locl";
 }
 
 h1, p, blockquote, h3 {

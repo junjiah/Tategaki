@@ -43,8 +43,11 @@ fetch(url).then(do(res)
 		let text = latin.innerHTML.trim!
 		if /^[\w\p{Script=Latin}]/.test text
 			if text.length == 1
+				if latin.parentElement.tagName == 'I' or latin.parentElement.tagName == 'EM'
+					continue
 				latin.innerHTML = transformToFullWidth text
 				latin.classList.remove 'latin'
+				latin.removeAttribute 'lang'
 			else if /^([A-Z]+|\d{4,})$/.test text
 				latin.innerHTML = Array.from(text, do(x)
 					transformToFullWidth x
@@ -52,8 +55,11 @@ fetch(url).then(do(res)
 				# Works only in Firefox `text-transform`
 				# latin.classList.add 'latin-full-width' 
 				latin.classList.remove 'latin'
+				latin.removeAttribute 'lang'
 			else if /^\d{2,3}$/.test text
 				latin.innerHTML = text
+				latin.classList.remove 'latin'
+				latin.removeAttribute 'lang'
 				latin.classList.add 'latin-combine'
 			else if /^\d{2,3}%$/.test text
 				let matches = /^(\d{1,3})%$/.exec text
@@ -61,7 +67,7 @@ fetch(url).then(do(res)
 				let digit = matches[1]
 				if digit.length == 1
 					digit = transformToFullWidth digit
-				unit.innerHTML = `<span class="latin latin-combine">{digit}</span>&#8288;％`
+				unit.innerHTML = `<span class="latin-combine">{digit}</span>&#8288;％`
 				latin.replaceWith unit
 			else if latin.offsetHeight < 23
 				latin.innerHTML = text
