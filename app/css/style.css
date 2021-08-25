@@ -101,6 +101,7 @@ figcaption {
 
 .latin {
     font-family: 'Crimson Pro', 'Noto Serif SC', 'Noto Serif TC', 'Noto Serif JP', Garamond, Georgia, serif;
+    font-weight: 353;
 
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
@@ -114,6 +115,10 @@ figcaption {
 
     position: relative;
     left: 1.1px;
+}
+
+b, strong .latin {
+    font-weight: 586;
 }
 
 .latin-combine {

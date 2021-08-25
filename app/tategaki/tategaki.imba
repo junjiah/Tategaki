@@ -63,7 +63,7 @@ fetch(url).then(do(res)
 					digit = transformToFullWidth digit
 				unit.innerHTML = `<span class="latin latin-combine">{digit}</span>&#8288;％`
 				latin.replaceWith unit
-			else if latin.offsetHeight <= 24
+			else if latin.offsetHeight <= 22
 				latin.innerHTML = text
 				latin.classList.add 'latin-combine'
 
