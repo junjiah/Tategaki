@@ -125,7 +125,7 @@ b, strong .latin {
     font-weight: 586;
 }
 
-.latin-combine {
+.tcy {
     -webkit-text-combine: horizontal;
     -moz-text-combine-upright: all;
     -ms-text-combine-horizontal: all;

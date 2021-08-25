@@ -60,18 +60,18 @@ fetch(url).then(do(res)
 				latin.innerHTML = text
 				latin.classList.remove 'latin'
 				latin.removeAttribute 'lang'
-				latin.classList.add 'latin-combine'
+				latin.classList.add 'tcy'
 			else if /^\d{1,3}%$/.test text
 				let matches = /^(\d{1,3})%$/.exec text
 				let unit = document.createElement 'span'
 				let digit = matches[1]
 				if digit.length == 1
 					digit = transformToFullWidth digit
-				unit.innerHTML = `<span {digit.length == 1 ? '' : 'class="latin-combine"'}>{digit}</span>&#8288;％`
+				unit.innerHTML = `<span {digit.length == 1 ? '' : 'class="tcy"'}>{digit}</span>&#8288;％`
 				latin.replaceWith unit
 			else if latin.offsetHeight < 23
 				latin.innerHTML = text
-				latin.classList.add 'latin-combine'
+				latin.classList.add 'tcy'
 	
 	# Bug: Cannot scroll at the very left part of body (Safari)
 	if isDebug
