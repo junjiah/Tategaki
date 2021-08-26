@@ -161,10 +161,7 @@ b, strong .latin {
 }
 
 .squeeze-in {
-    letter-spacing: -0.5rem;
-
-    position: relative;
-    top: -0.5rem;
+    margin-top: -0.5rem;
 }
 
 .squeeze-in + .squeeze-in-space {
