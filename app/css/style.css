@@ -4,8 +4,6 @@
     --a-colour: #1400ee;
     --a-visited-colour: #54198b;
     --img-onhover-colour: rgba(0, 0, 0, .06);
-    --normal-font-weight: 500;
-    --bold-font-weight: 900;
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -15,8 +13,6 @@
         --a-colour: #cbccff;
         --a-visited-colour: #e0b0ff;
         --img-onhover-colour: rgba(255, 255, 255, .06); 
-        --normal-font-weight: 400;
-        --bold-font-weight: 700;
     }
 }
 
@@ -38,8 +34,11 @@ body {
     -moz-font-feature-settings: "locl";
     -webkit-font-feature-settings: "locl";
     font-feature-settings: "locl";
+<<<<<<< HEAD
     
     font-weight: var(--normal-font-weight);
+=======
+>>>>>>> parent of 3f151d1 (Improve CJK font weight)
 }
 
 h1, p, blockquote, h3 {
@@ -53,7 +52,7 @@ small {
 }
 
 h1, h3 {
-    font-weight: var(--bold-font-weight);
+    font-weight: 700;
 }
 
 h1 {
@@ -68,10 +67,6 @@ h3 {
 p, blockquote {
     text-align: justify;
     text-indent: 1rem;
-}
-
-b, strong {
-    font-weight: var(--bold-font-weight);
 }
 
 blockquote {
