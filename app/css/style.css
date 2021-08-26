@@ -35,9 +35,9 @@ body {
     padding: 3.334rem;
     background-color: var(--background-colour);
 
-    -moz-font-feature-settings: "locl", "ccmp";
-    -webkit-font-feature-settings: "locl", "ccmp";
-    font-feature-settings: "locl", "ccmp";
+    -moz-font-feature-settings: "locl";
+    -webkit-font-feature-settings: "locl";
+    font-feature-settings: "locl";
     
     font-weight: var(--normal-font-weight);
 }
@@ -46,6 +46,10 @@ h1, p, blockquote, h3 {
     font-size: 1rem;
     max-height: 32rem;
     margin: 0;
+}
+
+small {
+    font-size: 0.75rem;
 }
 
 h1, h3 {
