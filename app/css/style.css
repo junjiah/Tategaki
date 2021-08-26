@@ -34,11 +34,6 @@ body {
     -moz-font-feature-settings: "locl";
     -webkit-font-feature-settings: "locl";
     font-feature-settings: "locl";
-<<<<<<< HEAD
-    
-    font-weight: var(--normal-font-weight);
-=======
->>>>>>> parent of 3f151d1 (Improve CJK font weight)
 }
 
 h1, p, blockquote, h3 {
