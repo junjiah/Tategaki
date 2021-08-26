@@ -70,6 +70,19 @@ blockquote {
     padding-top: 14px;
 }
 
+em {
+    font-style: normal;
+    text-emphasis: '\25AA';
+    -webkit-text-emphasis: '\25AA';
+    /* Would it be nice if offset can be customised */
+}
+
+em > .latin {
+    font-style: italic;
+    text-emphasis: none;
+    -webkit-text-emphasis: none;
+}
+
 a {
     color: var(--a-colour);
     text-decoration: none;
