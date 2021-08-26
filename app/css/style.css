@@ -4,6 +4,8 @@
     --a-colour: #1400ee;
     --a-visited-colour: #54198b;
     --img-onhover-colour: rgba(0, 0, 0, .06);
+    --normal-font-weight: 500;
+    --bold-font-weight: 900;
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -13,6 +15,8 @@
         --a-colour: #cbccff;
         --a-visited-colour: #e0b0ff;
         --img-onhover-colour: rgba(255, 255, 255, .06); 
+        --normal-font-weight: 400;
+        --bold-font-weight: 700;
     }
 }
 
@@ -31,9 +35,11 @@ body {
     padding: 3.334rem;
     background-color: var(--background-colour);
 
-    -moz-font-feature-settings: "locl";
-    -webkit-font-feature-settings: "locl";
-    font-feature-settings: "locl";
+    -moz-font-feature-settings: "locl", "ccmp";
+    -webkit-font-feature-settings: "locl", "ccmp";
+    font-feature-settings: "locl", "ccmp";
+    
+    font-weight: var(--normal-font-weight);
 }
 
 h1, p, blockquote, h3 {
@@ -43,7 +49,7 @@ h1, p, blockquote, h3 {
 }
 
 h1, h3 {
-    font-weight: 700;
+    font-weight: var(--bold-font-weight);
 }
 
 h1 {
@@ -58,6 +64,10 @@ h3 {
 p, blockquote {
     text-align: justify;
     text-indent: 1rem;
+}
+
+b, strong {
+    font-weight: var(--bold-font-weight);
 }
 
 blockquote {
