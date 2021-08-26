@@ -9,7 +9,9 @@ export class Telegraph
 				groups = cjkGroupsOf c
 				let combined = ''
 				groups.forEach do(group)
-					if group.isLatin
+					if /^_{3,}|-{3,}|\*{3,}$/.test group.content
+						combined += '<hr />'
+					else if group.isLatin
 						combined += `<span class="latin" lang="en">{group.content}</span>`
 					else
 						combined += Telegraph.captureSqueeze group.content
