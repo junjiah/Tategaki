@@ -1,6 +1,8 @@
 import { Telegraph } from '../telegraph'
 
 
+# `Tategaki` deals with downloaded article from Telegra.ph
+# Adding features like TCY
 export class Tategaki
 	re = /tategaki(\/[^\/]+)(\/debug)?$/
 	baseURL = 'https://api.telegra.ph/getPage' 
@@ -9,7 +11,7 @@ export class Tategaki
 	prop path
 	prop debugMode
 	prop url
-	prop telegraph
+	prop telegraph\Telegraph
 
 	prop heading
 	prop app

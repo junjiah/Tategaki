@@ -1,3 +1,5 @@
+# `Telegraph` retrieve data from Telegra.ph and translate it
+# to HTML for later progress
 export class Telegraph
 	prop translatedHTML = ""
 	prop title
