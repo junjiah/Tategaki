@@ -5,3 +5,7 @@
 ## 前置準備
 
 陋站使用 [Imba](https://imba.io) 作為前後端語言。請使用 `npm` 進行安裝。之後用 `npm start` 本機運行。
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
