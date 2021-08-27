@@ -14,19 +14,23 @@
         --a-visited-colour: #e0b0ff;
         --img-onhover-colour: rgba(255, 255, 255, .06); 
     }
+
+    html {
+        /* And smoothing when dark mode on */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
 }
 
 html {
     font-size: 18px; /* Define rem */
     line-height: 1.667;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
     color: var(--foreground-colour);
     font-family: 'Noto Serif TC', 'Noto Serif SC', 'Noto Serif JP', 'STSong', 'SimSun', serif;
-    text-rendering: geometricPrecision;
+    text-rendering: geometricPrecision !important;
     writing-mode: vertical-rl;
 
     hanging-punctuation: allow-end last;
@@ -202,6 +206,10 @@ b, strong .latin {
 /* Only the last closing bracket will be displayed */
 .squeeze-out-space:last-child {
     display: inline;
+}
+
+.debug .correct-punc {
+    font-family: 'Noto Serif JP', serif;
 }
 
 .debug .squeeze-in {

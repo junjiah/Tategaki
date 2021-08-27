@@ -26,8 +26,12 @@ export class Telegraph
 
 		def replacer _watch, puncs, _offset, _string
 			let squeezed = Array.from(puncs, do(punc)
-				if /[\u3001\u3002\uff01\uff0c\uff1a\uff1b\uff1f]/.test punc
+				if /[\uff01\uff1a\uff1b\uff1f]/.test punc
 					return `<span class="squeeze-other-punc">{punc}</span>`
+				else if /[\u3001\u3002\uff0c]/.test punc
+					# Use up-right puncs (JP form)
+					# At current only applied to debug mode
+					return `<span class="squeeze-other-punc correct-punc"">{punc}</span>`
 
 				let result = `<span class="{(isOpeningBracket punc) ? 'squeeze-in' : 'squeeze-out'}">{punc}</span>`
 				if isOpeningBracket punc
