@@ -16,8 +16,7 @@ export class Tategaki
 
 
 	def loadData data
-		telegraph = new Telegraph
-		telegraph.translateToHTML data.result.content
+		telegraph = new Telegraph data.result.content
 		telegraph.title = data.result.title
 
 	def makeTitle
