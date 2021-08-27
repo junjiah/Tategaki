@@ -34,7 +34,7 @@ tag Footer
 	<self.latin>
 		<small>
 			<b> "Denpo in Tategaki"
-			" is under early development. If any issue arise, feel free to contact Toto at "
+			" is under development. If any issue arise, feel free to contact Toto at "
 			<a href="mailto:the@unpopular.me"> "the@unpopular.me"
 			" or join " 
 			<a href="https://t.me/denpo_beta"> "Telegram Group"
