@@ -154,7 +154,7 @@ figcaption {
     hyphenate-limit-chars: 5 3 2;
 
     position: relative;
-    left: 1.1px;
+    left: 1px;
 }
 
 b, strong .latin {
