@@ -9,8 +9,9 @@ export class Telegraph
 	def preProcess text
 		return text
 			.replace(/\u0020*\n[\u0020\n]*/g, '\u200B\u204B') 
-			.replace(/——|──/g, '――').replace(/……/g, '⋯⋯')
-			# 1) Extra newline; 2) Dashes to U+2015
+			.replace(/——|──/g, '――')
+			.replace(/……/g, '⋯⋯')
+			# 1) Extra newline; 2) Dashes to U+2015; 3) Correct ellipsis
 
 	# Replacements for HTML tags
 	def postProcess text
