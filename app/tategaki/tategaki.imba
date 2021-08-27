@@ -1,89 +1,49 @@
 import { Telegraph } from '../telegraph'
-import fetch from 'node-fetch'
-import '../css/style.css'
 
-let re = /tategaki(\/[^\/]+)(\/debug)?$/
-let execed = re.exec window.location.pathname
-let path = execed[1]
-let isDebug = execed[2] != undefined
 
-let baseURL = 'https://api.telegra.ph/getPage'
-let query = '?return_content=true'
+export class Tategaki
+	re = /tategaki(\/[^\/]+)(\/debug)?$/
+	baseURL = 'https://api.telegra.ph/getPage' 
+	query = '?return_content=true'
 
-let url = baseURL + path + query
-console.log url
-fetch(url).then(do(res)
-	res.json!
-).then do(data)
-	# TODO: Validate Telegraph
-	let telegraph = new Telegraph
-	telegraph.translateToHTML data.result.content
-	telegraph.title = data.result.title
+	prop path
+	prop debugMode
+	prop url
+	prop telegraph
 
-	imba.mount <app>
+	prop heading
+	prop app
 
-	let heading = document.createElement('h1')
-	heading.innerText = telegraph.preProcess telegraph.title
-	document.title = telegraph.title + ' – Denpo'
 
-	let app = document.getElementById('app')
-	let article = document.createElement 'article'
-	article.innerHTML = telegraph.translatedHTML.trim! 
-	article.insertBefore heading, article.firstChild
-	app.appendChild article
+	def loadData data
+		telegraph = new Telegraph
+		telegraph.translateToHTML data.result.content
+		telegraph.title = data.result.title
 
-	if isDebug
-		app.classList.add 'debug'
+	def makeTitle
+		heading = document.createElement 'h1'
+		heading.innerText = telegraph.preProcess telegraph.title
+		document.title = telegraph.title + ' – Denpo'
+	
+	def makeArticle
+		app = document.getElementById 'app'
+		let article = document.createElement 'article'
+		article.innerHTML = telegraph.translatedHTML.trim!
+		article.insertBefore heading, article.firstChild
+		app.appendChild article
 
-	let latinsElements = document.getElementsByClassName 'latin'
-	let latins = []
-	for ele in latinsElements
-		latins.push ele
-	for latin in latins
-		let text = latin.innerHTML.trim!
-		if /^[\w\p{Script=Latin}]/.test text
-			if text.length == 1
-				if latin.parentElement.tagName == 'I' or latin.parentElement.tagName == 'EM'
-					continue
-				latin.innerHTML = transformToFullWidth text
-				latin.classList.remove 'latin'
-				latin.removeAttribute 'lang'
-			else if /^([A-Z]+|\d{4,})$/.test text
-				latin.innerHTML = Array.from(text, do(x)
-					transformToFullWidth x
-				).join('')
-				# Works only in Firefox `text-transform`
-				# latin.classList.add 'latin-full-width' 
-				latin.classList.remove 'latin'
-				latin.removeAttribute 'lang'
-			else if /^\d{2,3}$/.test text
-				latin.innerHTML = text
-				latin.classList.remove 'latin'
-				latin.removeAttribute 'lang'
-				latin.classList.add 'tcy'
-			else if /^\d{1,3}%$/.test text
-				let matches = /^(\d{1,3})%$/.exec text
-				let unit = document.createElement 'span'
-				let digit = matches[1]
-				if digit.length == 1
-					digit = transformToFullWidth digit
-				unit.innerHTML = `<span {digit.length == 1 ? '' : 'class="tcy"'}>{digit}</span>&#8288;％`
-				latin.replaceWith unit
-			else if latin.offsetHeight < 23
-				latin.innerHTML = text
-				latin.classList.add 'tcy'
+		if debugMode
+			app.classList.add 'debug'
 	
 	# Bug: Cannot scroll at the very left part of body (Safari)
-	if isDebug
-		return
+	def enableHandOffScrolling
 		const scrollContainer = document.querySelector('body')
 		scrollContainer.addEventListener "wheel", do(e)
-			console.log 'wheel'
 			if e.altKey or e.shiftKey
 				return
 
-			let x = e.deltaX
-			let y = e.deltaY
+			const x = e.deltaX
+			const y = e.deltaY
 
 			e.preventDefault!
 
@@ -92,31 +52,69 @@ fetch(url).then(do(res)
 
 			scrollContainer.scrollLeft -= y
 
-def transformToFullWidth x
-	let base = '0'.charCodeAt(0)
-	let newBase = '\uff10'.charCodeAt(0)
-	let current = x.charCodeAt(0)
-	let newChar = String.fromCharCode(current - base + newBase)
-	return newChar
+	def transformToFullWidth x
+		const base = '0'.charCodeAt(0)
+		const newBase = '\uff10'.charCodeAt(0)
+		const current = x.charCodeAt(0)
+		return String.fromCharCode(current - base + newBase)
 
-tag app
-	css footer
-		pos:fixed
-		b:0
-		l:0
-		r:0
-		writing-mode:horizontal-tb
-		ta:center
-		p:10px
-		c:#787f86
-		lh:normal
+	# Yokogaki in Tategaki
+	def tcy ele
+		const text = ele.innerHTML.trim!
+		if /^[\w\p{Script=Latin}]/.test text
+			if text.length == 1
+				if ele.parentElement.tagName == 'I' or ele.parentElement.tagName == 'EM'
+					return false
+				ele.innerHTML = transformToFullWidth text
+				ele.classList.remove 'latin'
+				ele.removeAttribute 'lang'
+			else if /^([A-Z]+|\d{4,})$/.test text
+				ele.innerHTML = Array.from(text, do(x)
+					transformToFullWidth x
+				).join('')
+				# Works only in Firefox `text-transform`
+				# latin.classList.add 'latin-full-width' 
+				ele.classList.remove 'latin'
+				ele.removeAttribute 'lang'
+			else if /^\d{2,3}$/.test text
+				ele.innerHTML = text
+				ele.classList.remove 'latin'
+				ele.removeAttribute 'lang'
+				ele.classList.add 'tcy'
+			else if /^\d{1,3}%$/.test text
+				const matches = /^(\d{1,3})%$/.exec text
+				let unit = document.createElement 'span'
+				let digit = matches[1]
+				if digit.length == 1
+					digit = transformToFullWidth digit
+				unit.innerHTML = `<span {digit.length == 1 ? '' : 'class="tcy"'}>{digit}</span>&#8288;％`
+				ele.replaceWith unit
+			else if ele.offsetHeight < 23
+				ele.innerHTML = text
+				ele.classList.add 'tcy'
 
-	<self#app lang="zh-Hant">
-		<footer.latin>
-			<small>
-				<b> "Denpo in Tategaki"
-				" is under early development. If any issue arise, feel free to contact Toto at "
-				<a href="mailto:the@unpopular.me"> "the@unpopular.me"
-				" or join " 
-				<a href="https://t.me/denpo_beta"> "Telegram Group"
-				" at your convenience."
+	def processLatinTags
+		let latinTags = document.getElementsByClassName 'latin'
+		let eles = []
+		for t in latinTags
+			eles.push t
+		for ele in eles
+			if not tcy ele
+				continue
+			
+	def parse data
+		# TODO: Validate Telegraph
+		loadData data
+		imba.mount <app>
+		makeTitle!
+		makeArticle!
+		processLatinTags!
+
+
+	constructor pathname
+		const execed = re.exec pathname
+		path = execed[1]
+		debugMode = execed[2] != undefined
+		url = baseURL + path + query
+		if debugMode
+			console.log url
