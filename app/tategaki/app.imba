@@ -4,7 +4,7 @@ import '../css/style.css'
 
 
 let tategaki = new Tategaki window.location.pathname 
-let url = tategaki.url
+const url = tategaki.url
 
 fetch(url).then(do(res)
 	res.json!
@@ -12,10 +12,13 @@ fetch(url).then(do(res)
 	tategaki.parse data
 
 
+# Entrance of `tategaki`, will not render anything except `<Footer>`
+# before retrieving data
 tag app
 	<self#app lang="zh-Hant">
 		<Footer>
 
+# Extra information. Should be removed in future
 tag Footer
 	css self
 		pos:fixed

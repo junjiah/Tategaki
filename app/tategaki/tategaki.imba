@@ -34,7 +34,7 @@ export class Tategaki
 		if debugMode
 			app.classList.add 'debug'
 	
-	# Bug: Cannot scroll at the very left part of body (Safari)
+	# Bug: Cannot scroll at the very left part of `<body>` (Safari)
 	def enableHandOffScrolling
 		const scrollContainer = document.querySelector('body')
 		scrollContainer.addEventListener "wheel", do(e)
@@ -46,27 +46,36 @@ export class Tategaki
 
 			e.preventDefault!
 
+			# Tell if using trackpad. But will lose accuracy.
 			if Math.abs(y) < 5 or Math.abs(x) > 0 and Math.abs(x) < 5
 				return
 
 			scrollContainer.scrollLeft -= y
 
+	# Since not all browser support full-width transformation,
+	# it'll do some unicode calc to do that.
+	# Delta between codes of characters in full-width is as same 
+	# as ASCII, so choose zero as base for calculation.
 	def transformToFullWidth x
 		const base = '0'.charCodeAt(0)
-		const newBase = '\uff10'.charCodeAt(0)
+		const newBase = '\uff10'.charCodeAt(0)  # Full-width zero
 		const current = x.charCodeAt(0)
 		return String.fromCharCode(current - base + newBase)
 
-	# Yokogaki in Tategaki
+	# Yokogaki in Tategaki (Tategaki-Chyu-Yokogaki)
 	def tcy ele
 		const text = ele.innerHTML.trim!
 		if /^[\w\p{Script=Latin}]/.test text
-			if text.length == 1
+			# Words with only one lettre should turn to full-width
+			# and lose `latin` class
+			if text.length == 1  
 				if ele.parentElement.tagName == 'I' or ele.parentElement.tagName == 'EM'
 					return false
 				ele.innerHTML = transformToFullWidth text
 				ele.classList.remove 'latin'
 				ele.removeAttribute 'lang'
+			# Abbreviations and numbers no more than 4 digits should
+			# turn to full-width
 			else if /^([A-Z]+|\d{4,})$/.test text
 				ele.innerHTML = Array.from(text, do(x)
 					transformToFullWidth x
@@ -75,11 +84,13 @@ export class Tategaki
 				# latin.classList.add 'latin-full-width' 
 				ele.classList.remove 'latin'
 				ele.removeAttribute 'lang'
+			# Other numbers should do TCY but be rendered by CJK fonts
 			else if /^\d{2,3}$/.test text
 				ele.innerHTML = text
 				ele.classList.remove 'latin'
 				ele.removeAttribute 'lang'
 				ele.classList.add 'tcy'
+			# Special cond: Percentage
 			else if /^\d{1,3}%$/.test text
 				const matches = /^(\d{1,3})%$/.exec text
 				let unit = document.createElement 'span'
@@ -88,6 +99,7 @@ export class Tategaki
 					digit = transformToFullWidth digit
 				unit.innerHTML = `<span {digit.length == 1 ? '' : 'class="tcy"'}>{digit}</span>&#8288;％`
 				ele.replaceWith unit
+			# Scale height of the ele to decide whether TCY
 			else if ele.offsetHeight < 23
 				ele.innerHTML = text
 				ele.classList.add 'tcy'
@@ -101,6 +113,7 @@ export class Tategaki
 			if not tcy ele
 				continue
 			
+	# Whole process of post-rendering
 	def parse data
 		# TODO: Validate Telegraph
 		loadData data

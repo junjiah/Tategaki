@@ -14,7 +14,9 @@ export class Telegraph
 	def postProcess text
 		return text
 			.replace(/\u200B\u204B/g, '<br />&emsp;')
-	
+
+	# Puncuation Squeezing, a.k.a. Puncuation Size & Pos Adjustment
+	# More info please refer to `style.css`
 	def squeeze text
 		const isOpeningBracket = do(ch)
 			# The code of opening bracket is always odd
@@ -42,6 +44,7 @@ export class Telegraph
 		text = text.replace(re, replacer)
 	
 	def makeUnits text
+		# RegEx that tell Latin parts from text
 		const re = /((?:[\uff10-\uff19\uff21-\uff3a\uff41-\uff5a]|[^\d\p{Script=Latin}\u0020-\u0023\u0025-\u002a\u002c-\u002f\u003a\u003b\u003f\u0040\u005b-\u005d\u005f\u007b\u007d\u00a1\u00a7\u00ab\u00b2\u00b3\u00b6\u00b7\u00b9\u00bb-\u00bf\u2010-\u2013\u2018\u2019\u201c\u201d\u2020\u2021\u2026\u2027\u2030\u2032-\u2037\u2039\u203a\u203c-\u203e\u2047-\u2049\u204e\u2057\u2070\u2074-\u2079\u2080-\u2089\u2150\u2153\u2154\u215b-\u215e\u2160-\u217f\u2474-\u249b\u2e18\u2e2e])+)|((?![\uff10-\uff19\uff21-\uff3a\uff41-\uff5a])[\d\p{Script=Latin}\u0020-\u0023\u0025-\u002a\u002c-\u002f\u003a\u003b\u003f\u0040\u005b-\u005d\u005f\u007b\u007d\u00a1\u00a7\u00ab\u00b2\u00b3\u00b6\u00b7\u00b9\u00bb-\u00bf\u2010-\u2013\u2018\u2019\u201c\u201d\u2020\u2021\u2026\u2027\u2030\u2032-\u2037\u2039\u203a\u203c-\u203e\u2047-\u2049\u204e\u2057\u2070\u2074-\u2079\u2080-\u2089\u2150\u2153\u2154\u215b-\u215e\u2160-\u217f\u2474-\u249b\u2e18\u2e2e]+)/gu
 
 		text = preProcess text
@@ -56,6 +59,8 @@ export class Telegraph
 			content: match[0]
 			isLatin: match[2] != undefined
 
+	# Please refer to JSON file created by `https://api.telegra.ph/getPage`
+	# A node may contain tag, attributes and its children
 	def translateToHTML nodes
 		let result = ""
 		for node in nodes

@@ -169,6 +169,7 @@ b, strong .latin {
     text-transform: full-width;
 }
 
+/* This will crop the lower part of closing brackets */
 .squeeze-out {
     letter-spacing: -0.5rem;
 }
@@ -177,6 +178,7 @@ b, strong .latin {
     margin-top: -0.5rem;
 }
 
+/* Remove spaces between multiple opening brackets */
 .squeeze-in + .squeeze-in-space {
     display: none;
 }
@@ -194,6 +196,7 @@ b, strong .latin {
     display: none;
 }
 
+/* Only the last closing bracket will be displayed */
 .squeeze-out-space:last-child {
     display: inline;
 }

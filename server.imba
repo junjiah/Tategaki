@@ -9,7 +9,7 @@ app.get(/tategaki\/.+/) do(req, res)
 	unless req.accepts(['html']) == 'html'
 		return res.sendStatus(404)
 	
-	'''
+	''' Could probably add a Telegram bot to send a message for each valid visit
 	unless /\/debug$/.test req.path
 		let baseURL = "https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
 		var request = new XMLHttpRequest!
