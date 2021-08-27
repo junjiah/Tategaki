@@ -4,4 +4,4 @@
 
 ## 前置準備
 
-陋站使用 [Imba](https://imba.io) 作為前後端的語言。請使用 `npm` 進行安裝。之後用 `npm start` 本地運行。
+陋站使用 [Imba](https://imba.io) 作為前後端語言。請使用 `npm` 進行安裝。之後用 `npm start` 本機運行。
