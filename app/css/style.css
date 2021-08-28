@@ -1,6 +1,7 @@
 :root {
     --foreground-colour: #071214;
     --background-colour: #ffffff;
+    --secondary-colour: #787f86;
     --a-colour: #1400ee;
     --a-visited-colour: #54198b;
     --img-onhover-colour: rgba(0, 0, 0, .06);
@@ -10,6 +11,7 @@
     :root {
         --foreground-colour: #ffffff;
         --background-colour: #202124;
+        --secondary-colour: #c5c9ce;
         --a-colour: #cbccff;
         --a-visited-colour: #e0b0ff;
         --img-onhover-colour: rgba(255, 255, 255, .06); 
@@ -59,7 +61,23 @@ h1, h3 {
 
 h1 {
     font-family: Helvetica, sans-serif;
+    margin-bottom: 1rem;
+}
+
+header {
     margin-left: 5rem; /* 3lh */
+    display: flex;
+    justify-content: space-between;
+
+    max-height: 32rem;
+}
+
+header > #info {
+    margin-top: auto;
+}
+
+#author {
+    margin-bottom: 1rem;
 }
 
 h3 {
@@ -139,7 +157,7 @@ figure > img:hover {
 
 figcaption {
     max-height: 32rem;
-    color: #787f86;
+    color: var(--secondary-colour);
     text-align: center;
 }
 
