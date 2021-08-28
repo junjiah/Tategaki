@@ -20,10 +20,25 @@ export class Tategaki
 	def loadData data
 		telegraph = new Telegraph data.result.content
 		telegraph.title = data.result.title
+		telegraph.author = data.result.author_name
+
+		def styleNum x, isMonth=yes
+			const base = (isMonth ? '\u32C0' : '\u33E0').charCodeAt 0
+			return String.fromCharCode(parseInt(x) - 1 + base)
+		
+		let re = /.+-(\d\d)-(\d\d)(-[1-9]\d{0,})?$/
+		let matches = re.exec data.result.path
+		telegraph.date = { month: styleNum(matches[1]), day: styleNum(matches[2], no) } 
 
 	def makeTitle
-		heading = document.createElement 'h1'
-		heading.innerText = telegraph.preProcess telegraph.title
+		heading = document.createElement 'header'
+		heading.innerHTML = `<h1>{telegraph.preProcess telegraph.title}</h1>`
+
+		author = document.createElement 'span'
+		author.id = 'info'
+		author.innerHTML = `<span id="author">{telegraph.author}</span><span id="date">{telegraph.date.month}{telegraph.date.day}</span>`
+		heading.appendChild author
+
 		document.title = telegraph.title + ' – Denpo'
 	
 	def makeArticle

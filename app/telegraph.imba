@@ -3,7 +3,8 @@
 export class Telegraph
 	prop translatedHTML = ""
 	prop title
-
+	prop author
+	prop date
 
 	# Raw replacements for specific puncs & symbols
 	def preProcess text
