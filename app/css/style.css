@@ -1,19 +1,29 @@
 :root {
-    --foreground-colour: #111;
+    --foreground-colour: #000a0c;
     --background-colour: #fff;
     --secondary-colour: #787f86;
-    --a-colour: #1400ee;
-    --a-visited-colour: #54198b;
+    --a-colour: #0e697e; /* #1400ee; */
+    --a-visited-colour: #084452;
+    --selection-colour: #12788f33;
     --img-onhover-colour: rgba(0, 0, 0, .06);
+}
+
+::-moz-selection {
+    background: var(--selection-colour);
+}
+  
+::selection {
+    background: var(--selection-colour);
 }
 
 @media screen and (prefers-color-scheme: dark) {
     :root {
-        --foreground-colour: #fff;
+        --foreground-colour: #f3f9fc;
         --background-colour: #202124;
         --secondary-colour: #c5c9ce;
-        --a-colour: #cbccff;
-        --a-visited-colour: #e0b0ff;
+        --a-colour: #91d6e5; /* #cbccff; */
+        --a-visited-colour: #56b8cd;
+        --selection-colour: #91d6e533;
         --img-onhover-colour: rgba(255, 255, 255, .06); 
     }
 
@@ -109,10 +119,6 @@ a {
 }
 
 a:hover {
-    color: var(--a-visited-colour)
-}
-
-a:visited {
     color: var(--a-visited-colour)
 }
 
