@@ -8,14 +8,6 @@
     --img-onhover-colour: rgba(0, 0, 0, .06);
 }
 
-::-moz-selection {
-    background: var(--selection-colour);
-}
-  
-::selection {
-    background: var(--selection-colour);
-}
-
 @media screen and (prefers-color-scheme: dark) {
     :root {
         --foreground-colour: #f3f9fc;
@@ -26,18 +18,22 @@
         --selection-colour: #91d6e533;
         --img-onhover-colour: rgba(255, 255, 255, .06); 
     }
+}
 
-    html {
-        /* And smoothing when dark mode on */
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-rendering: geometricPrecision !important;
-    }
+::-moz-selection {
+    background: var(--selection-colour);
+}
+  
+::selection {
+    background: var(--selection-colour);
 }
 
 html {
     font-size: 18px; /* Define rem */
     line-height: 1.667;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision !important;
 }
 
 body {
@@ -72,7 +68,7 @@ header {
 }
 
 h1, h3 {
-    font-weight: 700;
+    font-weight: 900;
 }
 
 h1 {
@@ -171,7 +167,7 @@ figcaption {
     hyphenate-limit-chars: 5 3 2;
 
     position: relative;
-    left: 0.061rem;
+    left: 0.083rem;
 }
 
 b, strong .latin {
