@@ -71,10 +71,6 @@ header {
     max-height: 32rem;
 }
 
-#author::before {
-    content: "言＝";
-}
-
 h1, h3 {
     font-weight: 700;
 }
