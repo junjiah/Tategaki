@@ -101,7 +101,7 @@ export class Telegraph
 					).join ' '
 
 				result += "<{node.tag}{attrsRaw ? ' ' + attrsRaw : ''}>{translateToHTML node.children}</{node.tag}>"
-		translatedHTML = postProcess result
+		return postProcess result
 
 
 	constructor content

@@ -33,13 +33,12 @@ export class Tategaki
 	def makeTitle
 		heading = document.createElement 'header'
 		heading.innerHTML = `<h1>{telegraph.preProcess telegraph.title}</h1>`
+		document.title = telegraph.title + ' – Denpo'
 
 		author = document.createElement 'span'
 		author.id = 'info'
-		author.innerHTML = `<span id="author">{telegraph.author}</span><span id="date">{telegraph.date.month}{telegraph.date.day}</span>`
+		author.innerHTML = `<span id="author">{telegraph.translateToHTML [telegraph.author]}</span>`
 		heading.appendChild author
-
-		document.title = telegraph.title + ' – Denpo'
 	
 	def makeArticle
 		app = document.getElementById 'app'

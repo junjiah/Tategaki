@@ -1,6 +1,6 @@
 :root {
-    --foreground-colour: #071214;
-    --background-colour: #ffffff;
+    --foreground-colour: #111;
+    --background-colour: #fff;
     --secondary-colour: #787f86;
     --a-colour: #1400ee;
     --a-visited-colour: #54198b;
@@ -9,7 +9,7 @@
 
 @media screen and (prefers-color-scheme: dark) {
     :root {
-        --foreground-colour: #ffffff;
+        --foreground-colour: #fff;
         --background-colour: #202124;
         --secondary-colour: #c5c9ce;
         --a-colour: #cbccff;
@@ -55,29 +55,22 @@ small {
     font-size: 0.75rem;
 }
 
+header {
+    margin-left: 5rem; /* 3lh */
+
+    max-height: 32rem;
+}
+
+#author::before {
+    content: "文＝";
+}
+
 h1, h3 {
     font-weight: 700;
 }
 
 h1 {
     font-family: Helvetica, sans-serif;
-    margin-bottom: 1rem;
-}
-
-header {
-    margin-left: 5rem; /* 3lh */
-    display: flex;
-    justify-content: space-between;
-
-    max-height: 32rem;
-}
-
-header > #info {
-    margin-top: auto;
-}
-
-#author {
-    margin-bottom: 1rem;
 }
 
 h3 {
@@ -176,7 +169,7 @@ figcaption {
     hyphenate-limit-chars: 5 3 2;
 
     position: relative;
-    left: 1px;
+    left: 0.061rem;
 }
 
 b, strong .latin {
