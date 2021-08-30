@@ -92,7 +92,7 @@ export class Tategaki
 				ele.removeAttribute 'lang'
 			# Abbreviations and numbers no more than 4 digits should
 			# turn to full-width
-			else if /^([A-Z]+|\d{4,})$/.test text
+			else if /^([A-Z]{3,}|\d{4,})$/.test text
 				ele.innerHTML = Array.from(text, do(x)
 					transformToFullWidth x
 				).join('')
@@ -101,7 +101,7 @@ export class Tategaki
 				ele.classList.remove 'latin'
 				ele.removeAttribute 'lang'
 			# Other numbers should do TCY but be rendered by CJK fonts
-			else if /^\d{2,3}$/.test text
+			else if /^[A-Z]{2}|\d{2,3}$/.test text
 				ele.innerHTML = text
 				ele.classList.remove 'latin'
 				ele.removeAttribute 'lang'
