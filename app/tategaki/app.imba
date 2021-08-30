@@ -11,6 +11,14 @@ fetch(url).then(do(res)
 ).then do(data)
 	tategaki.parse data
 
+document.fonts.onloadingdone = do(e)
+	# Forcing Chrome to re-calculate TCY width
+	# It's unbearably worked-around
+	for ele in document.getElementsByClassName 'tcy'
+		ele.style.display = 'none'
+		setTimeout(do
+			ele.style.display = 'inline'
+		1)
 
 # Entrance of `tategaki`, will not render anything except `<Footer>`
 # before retrieving data

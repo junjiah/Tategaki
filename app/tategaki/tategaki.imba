@@ -86,7 +86,7 @@ export class Tategaki
 			# and lose `latin` class
 			if text.length == 1  
 				if ele.parentElement.tagName == 'I' or ele.parentElement.tagName == 'EM'
-					return false
+					return no
 				ele.innerHTML = transformToFullWidth text
 				ele.classList.remove 'latin'
 				ele.removeAttribute 'lang'
@@ -106,6 +106,7 @@ export class Tategaki
 				ele.classList.remove 'latin'
 				ele.removeAttribute 'lang'
 				ele.classList.add 'tcy'
+				return yes
 			# Special cond: Percentage
 			else if /^\d{1,3}%$/.test text
 				const matches = /^(\d{1,3})%$/.exec text
@@ -119,6 +120,8 @@ export class Tategaki
 			else if ele.offsetHeight < 23
 				ele.innerHTML = text
 				ele.classList.add 'tcy'
+				return yes
+		return no
 
 	def processLatinTags
 		let latinTags = document.getElementsByClassName 'latin'
@@ -126,8 +129,7 @@ export class Tategaki
 		for t in latinTags
 			eles.push t
 		for ele in eles
-			if not tcy ele
-				continue
+			tcy ele
 			
 	# Whole process of post-rendering
 	def parse data
