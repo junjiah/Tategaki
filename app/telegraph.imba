@@ -95,8 +95,10 @@ export class Telegraph
 					attrsRaw = Object.entries(node.attrs).map(do(entry)
 						let key = entry[0]
 						let value = entry[1]
-						if (key == 'href' or key == 'src') and value[0] == '/'
+						if key == 'href' and value[0] == '/'
 							value = '.' + value
+						else if key == 'src' and value[0] == '/'
+							value = 'https://telegra.ph/' + value
 						return `{key}="{value}"`
 					).join ' '
 

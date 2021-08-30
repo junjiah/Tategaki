@@ -51,9 +51,13 @@ body {
     font-feature-settings: "locl";
 }
 
+article {
+    display: block;
+    max-height: 32rem;
+}
+
 h1, p, blockquote, h3 {
     font-size: 1rem;
-    max-height: 32rem;
     margin: 0;
 }
 
@@ -63,8 +67,6 @@ small {
 
 header {
     margin-left: 5rem; /* 3lh */
-
-    max-height: 32rem;
 }
 
 h1, h3 {
@@ -73,6 +75,16 @@ h1, h3 {
 
 h1 {
     font-family: Helvetica, sans-serif;
+    
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+
+    -moz-hyphenate-limit-chars: 5 3 2;
+    -webkit-hyphenate-limit-chars: 5 3 2;
+    -ms-hyphenate-limit-chars: 5 3 2;
+    hyphenate-limit-chars: 5 3 2;
 }
 
 h3 {
@@ -124,7 +136,6 @@ hr::before {
     display: block;
     text-align: center;
     margin: 0 1.667rem;
-    max-height: 32rem;
 
     position: relative;
     left: 0.273rem;
@@ -147,7 +158,6 @@ figure > img:hover {
 }
 
 figcaption {
-    max-height: 32rem;
     color: var(--secondary-colour);
     text-align: center;
 }
