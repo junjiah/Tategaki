@@ -96,7 +96,7 @@ export class Telegraph
 						let key = entry[0]
 						let value = entry[1]
 						if (key == 'href' or key == 'src') and value[0] == '/'
-							value = 'https://telegra.ph' + value
+							value = '.' + value
 						return `{key}="{value}"`
 					).join ' '
 
