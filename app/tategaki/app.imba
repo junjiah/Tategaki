@@ -20,6 +20,25 @@ document.fonts.onloadingdone = do(e)
 			ele.style.display = 'inline'
 		1)
 
+window.onresize = do
+	def articleHeight
+		const threshold = 712
+		if window.innerHeight >= threshold
+			return 32rem
+		
+		const raw = 32 - Math.ceil((threshold - window.innerHeight) / 18)
+		if raw < 20
+			return 20rem
+
+		return "{raw}rem"
+
+	let article = document.getElementsByTagName('article')[0]
+	let imgs = document.getElementsByTagName('img')
+
+	article.style.height = articleHeight!
+	for img in imgs
+		img.style.height = articleHeight!
+
 # Entrance of `tategaki`, will not render anything except `<Footer>`
 # before retrieving data
 tag app
