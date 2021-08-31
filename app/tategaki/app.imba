@@ -1,20 +1,21 @@
-import { Tategaki } from './tategaki'
+import { Article } from './article'
 import fetch from 'node-fetch'
 import '../css/style.css'
 
 
-let tategaki = new Tategaki window.location.pathname 
-const url = tategaki.url
+let articleStore = new Article window.location.pathname 
+const url = articleStore.url
 
 fetch(url).then(do(res)
 	res.json!
 ).then do(data)
-	tategaki.parse data
+	articleStore.parse data
 
+# @ts-ignore
 document.fonts.onloadingdone = do(e)
 	# Forcing Chrome to re-calculate TCY width
 	# It's unbearably worked-around
-	for ele in document.getElementsByClassName 'tcy'
+	for ele\HTMLElement in document.getElementsByClassName 'tcy'
 		ele.style.display = 'none'
 		setTimeout(do
 			ele.style.display = 'inline'
@@ -39,7 +40,7 @@ window.onresize = do
 	for img in imgs
 		img.style.height = articleHeight!
 
-# Entrance of `tategaki`, will not render anything except `<Footer>`
+# Entrance, will not render anything except `<Footer>`
 # before retrieving data
 tag app
 	<self#app lang="zh-Hant">

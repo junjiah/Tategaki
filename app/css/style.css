@@ -205,10 +205,6 @@ b, strong .latin {
     margin-top: -0.5rem;
 }
 
-.squeeze-in-space, .squeeze-out-space {
-    margin-bottom: 0.222rem;
-}
-
 /* Remove spaces between multiple opening brackets */
 .squeeze-in + .squeeze-in-space {
     display: none;
