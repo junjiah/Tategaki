@@ -185,6 +185,13 @@ b, strong .latin {
     font-weight: 586;
 }
 
+h1 .latin {
+    font-family: Helvetica, sans-serif;
+    font-weight: 900;
+    position: unset;
+    left: unset;
+}
+
 .tcy {
     -webkit-text-combine: horizontal;
     -moz-text-combine-upright: all;
