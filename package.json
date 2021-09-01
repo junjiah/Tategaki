@@ -8,6 +8,7 @@
     "express": "^4.17.1",
     "imba": "^2.0.0-alpha.146",
     "node-fetch": "^2.6.1",
+    "tategaki": "^0.1.0",
     "xmlhttprequest": "^1.8.0"
   }
 }
