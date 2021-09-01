@@ -76,16 +76,6 @@ h1, h3 {
 
 h1 {
     font-family: Helvetica, sans-serif;
-    
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    hyphens: auto;
-
-    -moz-hyphenate-limit-chars: 5 3 2;
-    -webkit-hyphenate-limit-chars: 5 3 2;
-    -ms-hyphenate-limit-chars: 5 3 2;
-    hyphenate-limit-chars: 5 3 2;
 }
 
 h3 {
@@ -167,6 +157,7 @@ figcaption {
     font-family: 'Crimson Pro', Garamond, Georgia, serif;
     font-weight: 339;
 
+    /* TODO: Correct hyphenation */
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
     -moz-hyphens: auto;
