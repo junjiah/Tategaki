@@ -169,9 +169,9 @@ h1 .latin {
     text-transform: full-width;
 }
 
-.debug .correct-punc {
+/* .debug .correct-punc {
     font-family: 'Noto Serif JP', serif;
-}
+} */
 
 .debug .squeeze-in {
     color: red;
