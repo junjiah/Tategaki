@@ -1,5 +1,5 @@
 import { Telegraph } from '../telegraph'
-import { Tategaki } from 'tategaki'
+import { Tategaki } from './tategaki'
 
 
 # `Article` deals with downloaded article from Telegra.ph
