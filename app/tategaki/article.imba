@@ -36,10 +36,11 @@ export class Article
 		heading.innerHTML = `<h1>{Tategaki.correctPuncs telegraph.title}</h1>`
 		document.title = telegraph.title + ' – Denpo'
 
-		author = document.createElement 'span'
-		author.id = 'info'
-		author.innerHTML = `<span id="author">{telegraph.translateToHTML [telegraph.author]}</span>`
-		heading.appendChild author
+		if telegraph.author
+			author = document.createElement 'span'
+			author.id = 'info'
+			author.innerHTML = `<span id="author">{telegraph.translateToHTML [telegraph.author]}</span>`
+			heading.appendChild author
 	
 	def makeArticle
 		let app = document.getElementById 'app'
