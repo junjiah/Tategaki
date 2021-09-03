@@ -1,3 +1,5 @@
+* { margin: 0; padding: 0 }
+
 :root {
     --foreground-colour: #000a0c;
     --background-colour: #fff;
@@ -41,13 +43,13 @@ body {
     font-family: 'Noto Serif TC', 'Noto Serif SC', 'Noto Serif JP', 'STSong', 'SimSun', serif;
     writing-mode: vertical-rl;
 
-    padding: 3.334rem;
     background-color: var(--background-colour);
 }
 
 article {
     display: block;
     height: 32rem;
+    margin: 3.334rem;
 }
 
 h1, p, blockquote, h3 {
@@ -167,6 +169,22 @@ h1 .latin {
 
 .latin-full-width {
     text-transform: full-width;
+}
+
+@media screen and (max-height: 480px) {
+    article {
+        margin: calc(3.334rem - (480px - 100vh) / 2);
+    }
+}
+
+@media screen and (max-height: 432px) {
+    :root {
+        font-size: 15px;
+    }
+
+    article {
+        margin: 30px env(safe-area-inset-right, 30px);
+    }
 }
 
 /* .debug .correct-punc {

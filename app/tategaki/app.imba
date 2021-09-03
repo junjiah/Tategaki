@@ -6,22 +6,7 @@ import '../css/style.css'
 let articleStore = new Article window.location.pathname 
 const url = articleStore.url
 
-fetch(url).then(do(res)
-	res.json!
-).then do(data)
-	articleStore.parse data
-
-# @ts-ignore
-document.fonts.onloadingdone = do(e)
-	# Forcing Chrome to re-calculate TCY width
-	# It's unbearably worked-around
-	for ele\HTMLElement in document.getElementsByClassName 'tcy'
-		ele.style.display = 'none'
-		setTimeout(do
-			ele.style.display = 'inline'
-		1)
-
-window.onresize = do
+def adjustArticleHeight
 	def articleHeight
 		const threshold = 712
 		if window.innerHeight >= threshold
@@ -39,6 +24,24 @@ window.onresize = do
 	article.style.height = articleHeight!
 	for img in imgs
 		img.style.height = articleHeight!
+
+window.onresize = adjustArticleHeight
+
+fetch(url).then(do(res)
+	res.json!
+).then do(data)
+	articleStore.parse data
+	adjustArticleHeight!
+
+# @ts-ignore
+document.fonts.onloadingdone = do(e)
+	# Forcing Chrome to re-calculate TCY width
+	# It's unbearably worked-around
+	for ele\HTMLElement in document.getElementsByClassName 'tcy'
+		ele.style.display = 'none'
+		setTimeout(do
+			ele.style.display = 'inline'
+		1)
 
 # Entrance, will not render anything except `<Footer>`
 # before retrieving data
