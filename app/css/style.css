@@ -124,6 +124,15 @@ ul {
     list-style-type: '\25AA\0020';
 }
 
+ol {
+    list-style-type: trad-chinese-informal;
+    list-style-position: inside;
+}
+
+ol li {
+    margin: 0;
+}
+
 hr {
     border: none;
     margin: 0;
