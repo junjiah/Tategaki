@@ -20,6 +20,12 @@
         --selection-colour: #91d6e533;
         --img-onhover-colour: rgba(255, 255, 255, .06); 
     }
+
+    html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: geometricPrecision !important;
+    }
 }
 
 ::-moz-selection {
@@ -33,9 +39,6 @@
 html {
     font-size: 18px; /* Define rem */
     line-height: 1.667;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeSpeed !important;
 }
 
 body {
