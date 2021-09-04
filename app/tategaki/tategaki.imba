@@ -2,11 +2,20 @@ export class Tategaki
 	prop rootElement\HTMLElement
 
 	# Split raw HTML to classes `cjk` and `latin`
-	def splitLatinFromCJK node\Node=rootElement, shouldSqeeze=yes
+	def splitLatinFromCJK node\Node=rootElement, shouldSqeeze=yes, depth=0
 		if node.nodeName[0] != '#'
+			if node.nodeName is 'P' and node.childNodes.length is 1
+				const text = node.childNodes[0].nodeValue
+				if text and text.trim! is '❧'
+					let hr = document.createElement 'hr'
+					node.parentNode.insertBefore hr, node
+					node.parentNode.removeChild node
+					return
+
 			for child in Array.from(node.childNodes)
-				splitLatinFromCJK child, shouldSqeeze
+				splitLatinFromCJK child, shouldSqeeze, depth+1
 		else
+			# TODO: If `depth == 1` and has no tag, wrap it into a `<p>`
 			const text = node.nodeValue
 			unless node.nodeName == '#text' and text.trim!
 				return
@@ -35,7 +44,15 @@ export class Tategaki
 				node.parentNode.insertBefore newEle, node
 
 			node.parentNode.removeChild node
-
+	
+	def removeStyle ele\HTMLElement=rootElement
+		if ele.nodeName[0] != '#' and ele.nodeName != 'IFRAME'
+			ele.removeAttribute 'style'
+			ele.removeAttribute 'class'
+			ele.removeAttribute 'width'
+			ele.removeAttribute 'height'
+			for child in Array.from(ele.children)
+				removeStyle child
 
 	# Raw replacements for specific puncs & symbols
 	static def correctPuncs text
@@ -88,6 +105,10 @@ export class Tategaki
 
 	# Yokogaki in Tategaki (Tategaki-Chyu-Yokogaki)
 	def tcy
+		let p = document.querySelector('p')
+		let fontSizeRaw\string = window.getComputedStyle(p)['font-size'].match(/(\d+)px/)[1]
+		let fontSize = parseInt fontSizeRaw
+
 		let eles\HTMLElement[] = Array.from(rootElement.getElementsByClassName 'latin')
 		for ele in eles
 			const text = ele.innerText.trim!
@@ -112,7 +133,7 @@ export class Tategaki
 					ele.classList.remove 'latin'
 					ele.removeAttribute 'lang'
 				# Other numbers should do TCY but be rendered by CJK fonts
-				else if /^[A-Z]{2}|\d{2,3}$/.test text
+				else if /^[A-Z]{2}$|^\d{2,3}$/.test text
 					ele.innerHTML = text
 					ele.classList.remove 'latin'
 					ele.removeAttribute 'lang'
@@ -127,13 +148,22 @@ export class Tategaki
 					unit.innerHTML = `<span {digit.length == 1 ? '' : 'class="tcy"'}>{digit}</span>&#8288;％`
 					ele.replaceWith unit
 				# Scale height of the ele to decide whether TCY
-				else if ele.getBoundingClientRect!.height <= 24
-					ele.innerHTML = text
-					ele.classList.add 'tcy'
+				else
+					let threshold = fontSize
+					if ele.innerText != text 
+						threshold *= 1.5
+					else
+						threshold *= 1.333
+					if ele.getBoundingClientRect!.height <= threshold 
+						ele.innerHTML = text
+						ele.classList.remove 'latin'
+						ele.removeAttribute 'lang'
+						ele.classList.add 'tcy'
 
 	# `element` must be on the screen
 	constructor element\HTMLElement, shouldSqueeze=yes
 		rootElement = element
 		element.classList.add 'tategaki'
 
+		removeStyle!
 		splitLatinFromCJK element, shouldSqueeze

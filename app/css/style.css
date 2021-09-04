@@ -95,7 +95,7 @@ em {
     /* Would it be nice if offset can be customised */
 }
 
-em > .latin {
+em .latin {
     font-style: italic;
     text-emphasis: none;
     -webkit-text-emphasis: none;
@@ -109,7 +109,19 @@ a {
 }
 
 a:hover {
-    color: var(--a-visited-colour)
+    color: var(--a-visited-colour);
+}
+
+header a {
+    color: var(--foreground-colour);
+}
+
+header a:hover {
+    color: var(--foreground-colour);
+}
+
+ul {
+    list-style-type: '\25AA\0020';
 }
 
 hr {
@@ -128,6 +140,11 @@ hr::before {
 }
 
 img {
+    max-height: 30rem;
+}
+
+figure img {
+    max-height: unset;
     height: 32rem;
 }
 
@@ -146,6 +163,7 @@ figure > img:hover {
 figcaption {
     color: var(--secondary-colour);
     text-align: center;
+    margin: 1rem 0;
 }
 
 .latin {
@@ -171,6 +189,11 @@ h1 .latin {
     text-transform: full-width;
 }
 
+.after-article {
+    width: 1.667rem;
+    margin: 0 -0.833rem;
+}
+
 @media screen and (max-height: 480px) {
     article {
         margin: calc(3.334rem - (480px - 100vh) / 2);
@@ -187,9 +210,11 @@ h1 .latin {
     }
 }
 
-/* .debug .correct-punc {
+/* Force using Japanese punctuations
+.debug .correct-punc {
     font-family: 'Noto Serif JP', serif;
-} */
+}
+*/
 
 .debug .squeeze-in {
     color: red;

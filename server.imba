@@ -1,9 +1,21 @@
 import express from 'express'
 import tategaki from './app/tategaki/index.html'
-import { XMLHttpRequest } from 'xmlhttprequest'
-
+import feedPage from './app/feed/index.html'
 
 const app = express!
+
+app.get(/rss\/.+/) do(req, res)
+	let match = req.path.match(/rss\/(.+)/)
+	let url = match[1]
+
+	let Parser = require 'rss-parser'
+	let parser = new Parser!
+	let feed = await parser.parseURL url
+
+	res.json feed.items
+
+app.get(/feed/) do(req, res)
+	res.send feedPage.body
 
 app.get(/tategaki\/.+/) do(req, res)
 	unless req.accepts(['html']) == 'html'
