@@ -42,7 +42,10 @@ let url = searchParams.get 'url'
 
 fetch('/rss/' + url).then(do(res)
 	res.json!
-).then do(items)
+).then do(data)
+	let items = data.items
+	document.title = data.title + ' – Denpo'
+
 	let app = document.getElementById 'app'
 	app.removeChild app.querySelector '#loading'
 	for item in items

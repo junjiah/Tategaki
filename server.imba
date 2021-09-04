@@ -12,7 +12,10 @@ app.get(/rss\/.+/) do(req, res)
 	let parser = new Parser!
 	let feed = await parser.parseURL url
 
-	res.json feed.items
+	res.json {
+		title: feed.title
+		items: feed.items
+	}
 
 app.get(/feed/) do(req, res)
 	res.send feedPage.body
