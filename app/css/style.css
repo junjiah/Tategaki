@@ -12,7 +12,7 @@
 
 @media screen and (prefers-color-scheme: dark) {
     :root {
-        --foreground-colour: #f3f9fc;
+        --foreground-colour: #fffffe;
         --background-colour: #161618;
         --secondary-colour: #c5c9ce;
         --a-colour: #91d6e5;
