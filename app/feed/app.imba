@@ -43,6 +43,10 @@ let url = searchParams.get 'url'
 fetch('/rss/' + url).then(do(res)
 	res.json!
 ).then do(data)
+	if not data.found or not data.items
+		window.location.replace './error/bad-feed-url'
+		return
+
 	let items = data.items
 	document.title = data.title + ' – Denpo'
 
