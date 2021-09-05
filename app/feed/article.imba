@@ -1,4 +1,4 @@
-import { Tategaki } from '../tategaki/tategaki'
+import { Tategaki } from 'tategaki'
 
 
 export class Article

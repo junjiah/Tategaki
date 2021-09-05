@@ -13,8 +13,6 @@ app.get(/rss\/.+/) do(req, res)
 	let parser = new Parser!
 
 	parser.parseURL url, do(err, feed)
-		console.log err
-
 		res.json {
 			found: not err
 			title: err ? undefined : feed.title 

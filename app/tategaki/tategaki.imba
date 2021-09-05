@@ -32,6 +32,8 @@ export class Tategaki
 				const isLatin = match[2] != undefined
 
 				newEle.classList.add (isLatin ? 'latin' : 'cjk')
+				if isLatin
+					newEle.setAttribute 'lang', 'en'
 
 				let innerText = Tategaki.correctPuncs match[0].replace /^\n|\n$/g, ''
 				if shouldSqeeze and !isLatin
