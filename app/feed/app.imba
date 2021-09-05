@@ -53,7 +53,6 @@ fetch('/rss/' + url).then(do(res)
 	let app = document.getElementById 'app'
 	app.removeChild app.querySelector '#loading'
 	for item in items
-		# console.log item
 		new Article item
 	adjustArticleHeight!
 

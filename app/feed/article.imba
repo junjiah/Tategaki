@@ -4,10 +4,30 @@ import { Tategaki } from 'tategaki'
 export class Article
 	prop item
 	prop heading
+	prop date
 
-	def makeTitle
+	def makeHeading
 		heading = document.createElement 'header'
 		heading.innerHTML = `<h1><a href="{item['link']}">{Tategaki.correctPuncs item.title}</a></h1>`
+
+		if item['isoDate']
+			let re = /(\d{4})-([01]\d)-([0-3]\d)/
+			let match = re.exec item['isoDate']
+
+			if match
+				const year = parseInt match[1]
+				const month = parseInt match[2] 
+				const day = parseInt match[3] 
+
+				def styleNum x, isMonth=yes
+					const base = (isMonth ? '\u32C0' : '\u33E0').charCodeAt 0
+					return String.fromCharCode(x - 1 + base)
+				
+				let info = document.createElement 'span'
+				info.id = 'info'
+				info.innerHTML = `{year}年{styleNum month}{styleNum day, no}`
+				heading.appendChild info
+
 	
 	def makeArticle
 		let app = document.getElementById 'app'
@@ -32,7 +52,7 @@ export class Article
 		tategaki.tcy!
 	
 	def parse
-		makeTitle!
+		makeHeading!
 		makeArticle!
 	
 	constructor item
