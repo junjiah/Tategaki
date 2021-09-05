@@ -52,3 +52,13 @@ fetch('/rss/' + url).then(do(res)
 		# console.log item
 		new Article item
 	adjustArticleHeight!
+
+# @ts-ignore
+document.fonts.onloadingdone = do(e)
+	# Forcing Chrome to re-calculate TCY width
+	# It's unbearably worked-around
+	for ele\HTMLElement in document.getElementsByClassName 'tcy'
+		ele.style.display = 'none'
+		setTimeout(do
+			ele.style.display = 'inline'
+		1)
