@@ -119,10 +119,6 @@ header a {
     color: var(--foreground-colour);
 }
 
-header a:hover {
-    color: var(--foreground-colour);
-}
-
 ul {
     list-style-type: '\25AA\0020';
 }
