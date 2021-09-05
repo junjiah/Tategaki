@@ -207,6 +207,10 @@ h1 .latin {
     margin: 0 -0.833rem;
 }
 
+.after-article:last-child {
+    width: 0.833rem;
+}
+
 @media screen and (max-height: 480px) {
     article {
         margin: calc(3.334rem - (480px - 100vh) / 2);

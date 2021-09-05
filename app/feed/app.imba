@@ -13,7 +13,7 @@ imba.mount <app>
 # Browser resizing
 def adjustArticleHeight
 	def articleHeight
-		const threshold = 712
+		const threshold = 696 
 		if window.innerHeight >= threshold
 			return 32rem
 		
