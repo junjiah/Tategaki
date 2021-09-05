@@ -47,6 +47,7 @@ body {
     writing-mode: vertical-rl;
 
     background-color: var(--background-colour);
+    overflow-y: hidden;
 }
 
 article {
@@ -170,7 +171,7 @@ figure > img:hover {
 
 figcaption {
     color: var(--secondary-colour);
-    text-align: center;
+    /* text-align: center; */
     margin: 1rem 0;
 }
 

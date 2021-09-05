@@ -5,7 +5,8 @@ import { Tategaki } from 'tategaki'
 # `Article` deals with downloaded article from Telegra.ph
 # Adding features like TCY
 export class Article
-	re = /tategaki(\/[^\/]+)(\/debug)?$/
+	reLegacy = /tategaki(\/[^\/]+)(\/debug)?$/
+	re = /(\/[^\/]+)(\/debug)?$/
 	baseURL = 'https://api.telegra.ph/getPage' 
 	query = '?return_content=true'
 
@@ -85,9 +86,13 @@ export class Article
 
 
 	constructor pathname
-		const execed = re.exec pathname
+		let execed = reLegacy.exec pathname
+		if not execed
+			execed = re.exec pathname
+		
 		path = execed[1]
 		debugMode = execed[2] != undefined
 		url = baseURL + path + query
+		
 		if debugMode
 			console.log url
