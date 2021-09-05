@@ -1,9 +1,11 @@
 import express from 'express'
+import favicon from 'serve-favicon'
 import tategaki from './app/tategaki/index.html'
 import feedPage from './app/feed/index.html'
 import errorPage from './app/error/index.html'
 
 const app = express!
+app.use favicon __dirname + '/public/img/favicon.ico'
 
 app.get(/rss\/.+/) do(req, res)
 	let match = req.path.match(/rss\/(.+)/)
