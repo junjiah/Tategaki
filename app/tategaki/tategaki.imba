@@ -61,6 +61,8 @@ export class Tategaki
 		return text
 			.replace(/——|──/g, '――')
 			.replace(/……/g, '⋯⋯')
+			.replace(/\.{6}/g, '⋯⋯')
+			.replace(/\ \/\ /g, '／')
 			# 1) Extra newline; 2) Dashes to U+2015; 3) Correct ellipsis
 	
 	# Puncuation Squeezing, a.k.a. Puncuation Size & Pos Adjustment
@@ -107,8 +109,8 @@ export class Tategaki
 
 	# Yokogaki in Tategaki (Tategaki-Chyu-Yokogaki)
 	def tcy
-		let p = document.querySelector('p')
-		let fontSizeRaw\string = window.getComputedStyle(p)['font-size'].match(/(\d+)px/)[1]
+		let docEle = document.documentElement
+		let fontSizeRaw\string = window.getComputedStyle(docEle)['font-size'].match(/(\d+)px/)[1]
 		let fontSize = parseInt fontSizeRaw
 
 		let eles\HTMLElement[] = Array.from(rootElement.getElementsByClassName 'latin')
@@ -163,9 +165,11 @@ export class Tategaki
 						ele.classList.add 'tcy'
 
 	# `element` must be on the screen
-	constructor element\HTMLElement, shouldSqueeze=yes
+	constructor element\HTMLElement, shouldSqueeze=yes, styled=yes
 		rootElement = element
 		element.classList.add 'tategaki'
 
-		removeStyle!
+		if not styled
+			removeStyle!
+
 		splitLatinFromCJK element, shouldSqueeze

@@ -44,7 +44,7 @@ export class Article
 		let spacing = document.createElement 'div'
 		spacing.classList.add 'after-article'
 
-		let tategaki = new Tategaki article
+		let tategaki = new Tategaki article, yes, no
 		app.appendChild article
 		app.appendChild spacing
 		

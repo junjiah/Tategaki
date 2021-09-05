@@ -50,10 +50,10 @@ export class Article
 		article.innerHTML = telegraph.contentHTML.trim!
 		article.insertBefore heading, article.firstChild
 
-		tategaku = new Tategaki article
+		tategaki = new Tategaki article
 		app.appendChild article
 
-		tategaku.tcy!
+		tategaki.tcy!
 
 		if debugMode
 			app.classList.add 'debug'
