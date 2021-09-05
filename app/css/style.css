@@ -201,6 +201,10 @@ h1 .latin {
     text-transform: full-width;
 }
 
+.tcy {
+    text-indent: 0;
+}
+
 .after-article {
     width: 1.667rem;
     margin: 0 -0.833rem;
