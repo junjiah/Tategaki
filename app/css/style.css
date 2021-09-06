@@ -131,6 +131,8 @@ ol {
 
 ol li {
     margin: 0;
+    text-indent: 1rem;
+    text-align: justify;
 }
 
 hr {
