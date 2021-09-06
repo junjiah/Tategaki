@@ -5,14 +5,28 @@ export class Article
 	prop item
 	prop heading
 	prop date
+	prop author = ''
+	prop dateRaw = ''
+	prop dateStyled = ''
 
 	def makeHeading
 		heading = document.createElement 'header'
 		heading.innerHTML = `<h1><a href="{item['link']}">{Tategaki.correctPuncs item.title}</a></h1>`
+		
+		let filled = no
+		
+		if item['creator']
+			author = item['creator'].trim!
+			filled = yes
+		else if item['author']
+			author = item['author'].trim!
+			filled = yes
 
 		if item['isoDate']
+			dateRaw = item['isoDate']
+
 			let re = /(\d{4})-([01]\d)-([0-3]\d)/
-			let match = re.exec item['isoDate']
+			let match = re.exec dateRaw
 
 			if match
 				const year = parseInt match[1]
@@ -22,12 +36,17 @@ export class Article
 				def styleNum x, isMonth=yes
 					const base = (isMonth ? '\u32C0' : '\u33E0').charCodeAt 0
 					return String.fromCharCode(x - 1 + base)
-				
-				let info = document.createElement 'span'
-				info.id = 'info'
-				info.innerHTML = `{year}年{styleNum month}{styleNum day, no}`
-				heading.appendChild info
 
+				dateStyled = `{year}年{styleNum month}{styleNum day, no}`
+				filled = yes
+
+
+
+		if filled
+			let info = document.createElement 'span'
+			info.id = 'info'
+			info.innerText = `{author}{!!author and !!dateRaw ? '\u25AA' : ''}{dateStyled}` 
+			heading.appendChild info
 	
 	def makeArticle
 		let app = document.getElementById 'app'
