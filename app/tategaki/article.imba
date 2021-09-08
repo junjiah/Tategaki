@@ -85,6 +85,9 @@ export class Article
 		makeArticle!
 
 
+	get urlNoQuery
+		baseURL + path
+
 	constructor pathname
 		let execed = reLegacy.exec pathname
 		if not execed

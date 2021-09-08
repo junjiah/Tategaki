@@ -4,7 +4,6 @@ import '../css/style.css'
 
 
 let articleStore = new Article window.location.pathname 
-const url = articleStore.url
 
 def adjustArticleHeight
 	def articleHeight
@@ -27,11 +26,15 @@ def adjustArticleHeight
 
 window.onresize = adjustArticleHeight
 
-fetch(url).then(do(res)
+fetch('/telegraph/' + articleStore.urlNoQuery).then(do(res)
 	res.json!
 ).then do(data)
-	articleStore.parse data
-	adjustArticleHeight!
+	if data.ok
+		articleStore.parse data
+		adjustArticleHeight!
+	else
+		let errorHint = data.error is "PAGE_NOT_FOUND" ? 'page-not-found' : 'bad-json'
+		window.location.replace `./error/{errorHint}`
 
 # @ts-ignore
 document.fonts.onloadingdone = do(e)
