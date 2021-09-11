@@ -71,7 +71,8 @@ header {
     margin-left: 5rem; /* 3lh */
 }
 
-h1, h3 {
+h1, h2, h3 {
+    font-size: 1rem;
     font-weight: 900;
 }
 
@@ -79,7 +80,7 @@ h1 {
     font-family: Helvetica, sans-serif;
 }
 
-h3 {
+h2 {
     margin: 0 3.334rem 0 1.667rem; /* 2lh 1lh */
 }
 
