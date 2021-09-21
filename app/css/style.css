@@ -45,7 +45,9 @@ html {
 
 body {
     color: var(--foreground-colour);
-    font-family: 'Noto Serif TC', 'Noto Serif SC', 'Noto Serif JP', 'STSong', 'SimSun', serif;
+    font-family: source-han-serif-tc, source-han-serif-sc, source-han-serif-japanese, 'STSong', 'SimSun', serif;
+    font-weight: 500;
+    
     writing-mode: vertical-rl;
 
     background-color: var(--background-colour);
@@ -186,14 +188,14 @@ figcaption {
 
 .latin {
     font-family: 'Crimson Pro', Garamond, Georgia, serif;
-    font-weight: 339;
+    font-weight: 429;
 
     position: relative;
     left: 0.083rem;
 }
 
 b, strong .latin {
-    font-weight: 586;
+    font-weight: 686;
 }
 
 h1 .latin {
@@ -236,12 +238,6 @@ h1 .latin {
     }
 }
 
-/* Force using Japanese punctuations
-.debug .correct-punc {
-    font-family: 'Noto Serif JP', serif;
-}
-*/
-
 .debug .squeeze-in {
     color: red;
 }
@@ -256,4 +252,9 @@ h1 .latin {
 
 .debug .squeeze-out-space {
     background-color: rgba(0, 139, 139, 0.5);
+}
+
+/* Adobe version of Source Han Serif will have some issues with brackets */
+.squeeze-in, .squeeze-out {
+    font-family: 'Noto Serif TC', serif;
 }
