@@ -48,7 +48,7 @@ fetch('/rss/' + url).then(do(res)
 		return
 
 	let items = data.items
-	document.title = data.title + ' – Denpo'
+	document.title = data.title + ' – Tategaki'
 
 	let app = document.getElementById 'app'
 	app.removeChild app.querySelector '#loading'

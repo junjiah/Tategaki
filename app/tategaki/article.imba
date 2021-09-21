@@ -35,7 +35,7 @@ export class Article
 	def makeTitle
 		heading = document.createElement 'header'
 		heading.innerHTML = `<h1>{Tategaki.correctPuncs telegraph.title}</h1>`
-		document.title = telegraph.title + ' – Denpo'
+		document.title = telegraph.title + ' – Tategaki'
 
 		if telegraph.author
 			author = document.createElement 'span'
