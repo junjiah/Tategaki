@@ -1,8 +1,8 @@
 * { margin: 0; padding: 0 }
 
 :root {
-    --foreground-colour: #000a0c;
-    --background-colour: #fff;
+    --foreground-colour: #000a0cf5;
+    --background-colour: #fdfdfc;
     --secondary-colour: #787f86;
     --a-colour: #0e697e;
     --a-visited-colour: #084452;
@@ -14,7 +14,7 @@
 
 @media screen and (prefers-color-scheme: dark) {
     :root {
-        --foreground-colour: #fffffe;
+        --foreground-colour: #fffffee3;
         --background-colour: #161618;
         --secondary-colour: #c5c9ce;
         --a-colour: #91d6e5;
@@ -47,6 +47,7 @@ body {
     color: var(--foreground-colour);
     font-family: source-han-serif-tc, source-han-serif-sc, source-han-serif-japanese, 'STSong', 'SimSun', serif;
     font-weight: 500;
+    font-style: normal;
     
     writing-mode: vertical-rl;
 
