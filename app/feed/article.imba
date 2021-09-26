@@ -1,4 +1,5 @@
 import { Tategaki } from 'tategaki'
+import { detect } from 'detect-browser'
 
 
 export class Article
@@ -10,8 +11,9 @@ export class Article
 	prop dateStyled = ''
 
 	def makeHeading
-		heading = document.createElement 'header'
-		heading.innerHTML = `<h1><a href="{item['link']}">{Tategaki.correctPuncs item.title}</a></h1>`
+		heading = document.createElement 'div'
+		heading.classList.add 'headline'
+		heading.innerHTML = `<h1><a href="{item['link']}">{item.title}</a></h1>`
 		
 		let filled = no
 		
@@ -63,12 +65,17 @@ export class Article
 		let spacing = document.createElement 'div'
 		spacing.classList.add 'after-article'
 
-		let tategaki = new Tategaki article, yes, no
 		app.appendChild article
 		app.appendChild spacing
-		
 
-		tategaki.tcy!
+		const browser = detect!
+		if browser
+			document.body.classList.add browser.name
+
+		let tategaki = new Tategaki article, true, true, true, true
+		app.appendChild article
+
+		tategaki.parse!
 	
 	def parse
 		makeHeading!

@@ -1,5 +1,3 @@
-import '../css/style.css'
-
 # Entrance
 tag app
 	<self#app lang="zh-Hant">

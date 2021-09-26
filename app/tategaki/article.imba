@@ -1,5 +1,6 @@
 import { Telegraph } from '../telegraph'
 import { Tategaki } from 'tategaki'
+import { detect } from 'detect-browser'
 
 
 # `Article` deals with downloaded article from Telegra.ph
@@ -33,8 +34,9 @@ export class Article
 		telegraph.date = { month: styleNum(matches[1]), day: styleNum(matches[2], no) } 
 
 	def makeTitle
-		heading = document.createElement 'header'
-		heading.innerHTML = `<h1>{Tategaki.correctPuncs telegraph.title}</h1>`
+		heading = document.createElement 'div'
+		heading.classList.add 'headline'
+		heading.innerHTML = `<h1>{telegraph.title}</h1>`
 		document.title = telegraph.title + ' – Tategaki'
 
 		if telegraph.author
@@ -50,10 +52,14 @@ export class Article
 		article.innerHTML = telegraph.contentHTML.trim!
 		article.insertBefore heading, article.firstChild
 
-		tategaki = new Tategaki article
+		const browser = detect!
+		if browser
+			document.body.classList.add browser.name
+
+		tategaki = new Tategaki article, true, true, true
 		app.appendChild article
 
-		tategaki.tcy!
+		tategaki.parse!
 
 		if debugMode
 			app.classList.add 'debug'

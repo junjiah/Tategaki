@@ -1,6 +1,5 @@
 import { Article } from './article'
 import fetch from 'node-fetch'
-import '../css/style.css'
 
 
 let articleStore = new Article window.location.pathname 

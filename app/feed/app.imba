@@ -1,4 +1,3 @@
-import '../css/style.css'
 import { Article } from './article'
 import fetch from 'node-fetch'
 
