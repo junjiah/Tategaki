@@ -1,6 +1,7 @@
 {
-  "name": "denpo.in",
+  "name": "tategaki-site",
   "scripts": {
+    "test": "heroku local web -p 7070",
     "start": "imba -w server.imba",
     "build": "imba build server.imba"
   },
