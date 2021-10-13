@@ -21,13 +21,18 @@ export class Telegraph
 				if /\*:.+:\*/.test node
 					def rubyReplacer match, before, offset, string
 						def replacer m, p1, o, s
-							return `<rt>{p1}</rt>`
+							let _class = ''
+							if /[\u02d9\u02c9\u02ca\u02c7\u02cb\u02ea\u02eb\u3105-\u312d\u31a0-\u31b2\u31b4\u31b5\u31b7]/.test p1
+								_class = 'bopomofo'
+							elif /\p{Script=Latin}/u.test p1
+								_class = 'pinyin'
+
+							return `<rt class="{_class}">{p1}</rt>`
 
 						const after = before.replace /\/([^\/]+)\//g, replacer
-
 						return `<ruby>{after}</ruby>`
 
-					result += node.replace /\*:(.+):\*/g, rubyReplacer
+					result += node.replace /\*:([^:]+):\*/g, rubyReplacer
 				else
 					result += node
 			else 
