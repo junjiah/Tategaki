@@ -18,6 +18,16 @@ export class Telegraph
 				# 1) Three _ / - / * or above will generate an `<hr>`
 				if /^_{3,}|-{3,}|\*{3,}$/.test node
 					result += '<hr />'
+				if /\*:.+:\*/.test node
+					def rubyReplacer match, before, offset, string
+						def replacer m, p1, o, s
+							return `<rt>{p1}</rt>`
+
+						const after = before.replace /\/([^\/]+)\//g, replacer
+
+						return `<ruby>{after}</ruby>`
+
+					result += node.replace /\*:(.+):\*/g, rubyReplacer
 				else
 					result += node
 			else 

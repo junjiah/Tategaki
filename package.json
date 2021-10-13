@@ -13,7 +13,7 @@
     "node-fetch": "^2.6.1",
     "rss-parser": "^3.12.0",
     "serve-favicon": "^2.5.0",
-    "tategaki": "^1.0.7",
+    "tategaki": "^1.0.8",
     "xmlhttprequest": "^1.8.0"
   }
 }
