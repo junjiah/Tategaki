@@ -72,7 +72,13 @@ export class Article
 		if browser
 			document.body.classList.add browser.name
 
-		let tategaki = new Tategaki article, true, true, true, true
+		let tategaki = new Tategaki article, {
+			shouldPcS: true,
+			imitatePcS: true,
+			imitateTransfromToFullWidth: true,
+			shouldRemoveStyle: true,
+			convertNewlineCustom: false
+		}
 		app.appendChild article
 
 		tategaki.parse!
