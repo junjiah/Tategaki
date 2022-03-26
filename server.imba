@@ -1,5 +1,6 @@
 import express from 'express'
 import favicon from 'serve-favicon'
+import index from './app/index.html'
 import tategaki from './app/tategaki/index.html'
 import feedPage from './app/feed/index.html'
 import errorPage from './app/error/index.html'
@@ -41,6 +42,9 @@ app.get(/telegraph\/.+/) do(req, res)
 
 app.get(/tategaki\/.+/) do(req, res)
 	res.send tategaki.body
+
+app.get(/^\/?$/) do(req, res)
+	res.send index.body
 
 app.get(/.+/) do(req, res)
 	res.send tategaki.body
