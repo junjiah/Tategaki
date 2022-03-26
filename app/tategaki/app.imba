@@ -53,4 +53,6 @@ tag app
 
 # Extra information. Should be removed in future
 tag Footer
-	<self.latin>
+	<self>
+		<div.side-right-gradient>
+		<div.side-left-gradient>
