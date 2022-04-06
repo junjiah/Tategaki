@@ -31,6 +31,26 @@ fetch('/telegraph/' + articleStore.urlNoQuery).then(do(res)
 	if data.ok
 		articleStore.parse data
 		adjustArticleHeight!
+		let imgs = Array.from document.getElementsByTagName('img')
+		for img\HTMLImageElement in imgs
+			const ratio = img.naturalWidth / img.naturalHeight
+			if ratio > 2
+				let canvas = document.createElement 'canvas'
+				canvas.height = img.naturalWidth
+				canvas.width = img.naturalHeight 
+				
+				let rotatedImg = document.createElement 'img'
+				rotatedImg.src = img.src
+
+				let ctx = canvas.getContext '2d'
+
+				ctx.translate img.naturalHeight, 0
+				ctx.rotate 0.5 * Math.PI
+				ctx.drawImage rotatedImg, 0, 0
+
+				let parentElement = img.parentElement
+				parentElement.insertBefore canvas, img
+				parentElement.removeChild img
 	else
 		let errorHint = data.error is "PAGE_NOT_FOUND" ? 'page-not-found' : 'bad-json'
 		window.location.replace `./error/{errorHint}`
