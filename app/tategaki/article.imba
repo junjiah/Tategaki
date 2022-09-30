@@ -8,7 +8,7 @@ import { detect } from 'detect-browser'
 export class Article
 	reLegacy = /tategaki(\/[^\/]+)(\/debug)?$/
 	re = /(\/[^\/]+)(\/debug)?$/
-	baseURL = 'https://api.telegra.ph/getPage' 
+	baseURL = 'https://api.telegra.ph/getPage'
 	query = '?return_content=true'
 
 	prop path
@@ -28,23 +28,23 @@ export class Article
 		def styleNum x, isMonth=yes
 			const base = (isMonth ? '\u32C0' : '\u33E0').charCodeAt 0
 			return String.fromCharCode(parseInt(x) - 1 + base)
-		
+
 		let re = /.+-(\d\d)-(\d\d)(-[1-9]\d{0,})?$/
 		let matches = re.exec data.result.path
-		telegraph.date = { month: styleNum(matches[1]), day: styleNum(matches[2], no) } 
+		telegraph.date = { month: styleNum(matches[1]), day: styleNum(matches[2], no) }
 
 	def makeTitle
 		heading = document.createElement 'div'
 		heading.classList.add 'headline'
 		heading.innerHTML = `<h1>{telegraph.title}</h1>`
-		document.title = telegraph.title + ' – Tategaki'
+		document.title = telegraph.title + ' – 亏捕头和均价'
 
 		if telegraph.author
 			author = document.createElement 'span'
 			author.id = 'info'
 			author.innerHTML = `<span id="author">{telegraph.translateToHTML [telegraph.author]}</span>`
 			heading.appendChild author
-	
+
 	def makeArticle
 		let app = document.getElementById 'app'
 
@@ -69,7 +69,7 @@ export class Article
 
 		if debugMode
 			app.classList.add 'debug'
-	
+
 	# Bug: Cannot scroll at the very left part of `<body>` (Safari)
 	def enableHandOffScrolling
 		const scrollContainer = document.querySelector('body')
@@ -87,7 +87,7 @@ export class Article
 				return
 
 			scrollContainer.scrollLeft -= y
-			
+
 	# Whole process of post-rendering
 	def parse data
 		# TODO: Validate Telegraph
@@ -104,10 +104,10 @@ export class Article
 		let execed = reLegacy.exec pathname
 		if not execed
 			execed = re.exec pathname
-		
+
 		path = execed[1]
 		debugMode = execed[2] != undefined
 		url = baseURL + path + query
-		
+
 		if debugMode
 			console.log url

@@ -4,25 +4,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=0.96, viewport-fit=cover">
         <link rel="stylesheet" href="https://unpkg.com/tategaki@1.1.10/assets/tategaki.css" />
         <link rel="stylesheet" href="https://unpkg.com/tategaki@1.1.13/assets/style.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com"> 
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,428;0,686;1,428;1,686&family=Noto+Serif+TC:wght@500;900&display=swap" rel="stylesheet">
-        <script>
-            (function(d) {
-                var config = {
-                    kitId: 'quu8bfa',
-                    scriptTimeout: 3000,
-                    async: true
-                },
-                h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-            })(document);
-        </script>
-        <meta name="theme-color" 
+        <meta name="theme-color"
               content="#fdfdfc"
               media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" 
+        <meta name="theme-color"
               content="#161618"
               media="(prefers-color-scheme: dark)" />
+        <style>
+            @font-face {
+                font-family: I-Ming;
+                src: url("https://cdn.jsdelivr.net/gh/junjiah/I.Ming/7.01/I-Ming-7-01.woff2");
+            }
+
+            body {
+                font-family: 'I-Ming';
+            }
+
+            a {
+                color: orangered;
+            }
+
+            h1 {
+                color: orangered;
+            }
+        </style>
     </head>
     <body>
         <script type="module" src="./app.imba"></script>
