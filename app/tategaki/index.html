@@ -13,6 +13,37 @@
         <meta name="theme-color"
               content="#161618"
               media="(prefers-color-scheme: dark)" />
+        <script type="text/javascript">
+            function adjustArticleHeight() {
+            var res\u03C6;
+            function articleHeight() {
+                const threshold = 696;
+                if (window.innerHeight >= threshold) {
+                return "32rem";
+                }
+                ;
+                const raw = 32 - Math.ceil((threshold - window.innerHeight) / 18);
+                if (raw < 20) {
+                return "20rem";
+                }
+                ;
+                return "" + raw + "rem";
+            }
+            ;
+            let article = globalThis.document.getElementsByTagName("article")[0];
+            let imgs = globalThis.document.getElementsByTagName("img");
+            article.style.height = articleHeight();
+            res\u03C6 = [];
+            for (let i\u03C6 = 0, items\u03C6 = iter$__6(imgs), len\u03C6 = items\u03C6.length; i\u03C6 < len\u03C6; i\u03C6++) {
+                let img = items\u03C6[i\u03C6];
+                res\u03C6.push(img.style.height = articleHeight());
+            }
+            ;
+            return res\u03C6;
+            }
+            window.onresize = adjustArticleHeight;
+            adjustArticleHeight();
+        </script>
         <style>
             @font-face {
                 font-family: I-Ming;
