@@ -2,14 +2,14 @@ import { Article } from './article'
 import fetch from 'node-fetch'
 
 
-let articleStore = new Article window.location.pathname 
+let articleStore = new Article window.location.pathname
 
 def adjustArticleHeight
 	def articleHeight
 		const threshold = 696
 		if window.innerHeight >= threshold
 			return 32rem
-		
+
 		const raw = 32 - Math.ceil((threshold - window.innerHeight) / 18)
 		if raw < 20
 			return 20rem
@@ -37,8 +37,8 @@ fetch('/telegraph/' + articleStore.urlNoQuery).then(do(res)
 			if ratio > 2
 				let canvas = document.createElement 'canvas'
 				canvas.height = img.naturalWidth
-				canvas.width = img.naturalHeight 
-				
+				canvas.width = img.naturalHeight
+
 				let rotatedImg = document.createElement 'img'
 				rotatedImg.src = img.src
 
@@ -74,5 +74,5 @@ tag app
 # Extra information. Should be removed in future
 tag Footer
 	<self>
-		<div.side-right-gradient>
-		<div.side-left-gradient>
+		<div>
+		<div>
